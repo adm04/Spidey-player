@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPIDEY ♪ PLAYER — Pixel-Art Music Player</title>
+  <title>SPIDEY ♪ TRACKER — Retro Music Player</title>
   <meta name="description" content="Retro pixel-art comic inspired music tracker and audio player with chiptune synthesis and interactive track map.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,231 +12,246 @@
 </head>
 <body>
 
-  <!-- Screen Scanline & Grain Overlay -->
+  <!-- Screen Scanline & Phosphor Overlay -->
   <div class="crt-overlay" id="crtOverlay"></div>
 
-  <!-- Main Device Frame -->
-  <div class="retro-device" id="deviceContainer">
-    
-    <!-- Outer Hardware Bezel Details -->
-    <div class="bezel-top">
-      <div class="screw top-left"></div>
-      <div class="sensor-bar">
-        <span class="sensor-dot"></span>
-        <span class="sensor-line"></span>
-        <span class="sensor-dot red"></span>
+  <!-- Outer Fullscreen Arcade Monitor Casing -->
+  <div class="monitor-wrapper">
+    <div class="monitor-frame" id="monitorFrame">
+      
+      <!-- Top Bezel Area -->
+      <div class="bezel-header">
+        <!-- Top Left Mascot Eye Badge -->
+        <button class="bezel-badge-btn" id="eyeBadgeBtn" title="Spidey Scanner Eye" aria-label="Spidey Scanner">
+          <div class="pixel-eye-badge">
+            <span class="bezel-eye left"></span>
+            <span class="bezel-eye right"></span>
+          </div>
+        </button>
+
+        <!-- Center Header Pill -->
+        <div class="top-title-pill">
+          <span class="title-text">SPIDEY</span>
+          <div class="mini-spidey-mask">
+            <span class="mini-mask-eye l"></span>
+            <span class="mini-mask-eye r"></span>
+          </div>
+          <span class="title-text">TRACKER</span>
+        </div>
+
+        <!-- Top Right Spider Button -->
+        <button class="top-sq-btn" id="crtToggleBtn" title="Toggle Scanline CRT Filter" aria-label="Toggle CRT">
+          <span class="spider-glyph">🕷</span>
+        </button>
       </div>
-      <div class="screw top-right"></div>
-    </div>
 
-    <div class="wrap">
-      <!-- Top Bar -->
-      <header class="topbar">
-        <button class="icon-btn gold-btn" id="menuBtn" title="Open Tracklist & Settings" aria-label="Menu">
-          <span class="pixel-icon">☰</span>
+      <!-- Left Side Bezel Navigation Tabs -->
+      <div class="bezel-left-tabs">
+        <button class="side-tab active" id="sideTabPlayer" title="Now Playing View" aria-label="Now Playing">
+          <span class="tab-glyph">🕷</span>
         </button>
+        <button class="side-tab" id="sideTabMap" title="Track Map View" aria-label="Track Map">
+          <span class="tab-glyph">🕸</span>
+        </button>
+        <button class="side-tab" id="sideTabMenu" title="Tracklist Menu" aria-label="Tracklist">
+          <span class="tab-glyph">☰</span>
+        </button>
+      </div>
+
+      <!-- MAIN SCREEN DISPLAY AREA -->
+      <div class="screen-viewport">
         
-        <div class="title-pill" id="titlePill">
-          SPIDEY <span class="accent-glyph">♪</span> PLAYER
-        </div>
+        <!-- Background Halftone & Faint Spider Emblem Watermark -->
+        <div class="screen-watermark-bg"></div>
+        <div class="screen-scanlines"></div>
 
-        <div class="topbar-right">
-          <button class="icon-btn alt-btn" id="fxToggleBtn" title="Toggle 8-bit Chiptune / Audio Mode" aria-label="Audio Mode">
-            <span class="pixel-icon">🕷</span>
-          </button>
-          <button class="icon-btn alt-btn" id="crtToggleBtn" title="Toggle CRT Scanline Filter" aria-label="CRT Effect">
-            <span class="pixel-icon">📺</span>
-          </button>
-        </div>
-      </header>
-
-      <!-- View Navigation Tabs -->
-      <nav class="tabs" role="tablist" aria-label="Player Views">
-        <button class="tab active" id="tabPlayer" role="tab" aria-selected="true" aria-controls="screen">
-          <span class="tab-indicator">▶</span> NOW PLAYING
-        </button>
-        <button class="tab" id="tabMap" role="tab" aria-selected="false" aria-controls="mapscreen">
-          <span class="tab-indicator">✦</span> TRACK MAP
-        </button>
-      </nav>
-
-      <!-- SCREEN 1: NOW PLAYING VIEW -->
-      <main class="screen active" id="screen" role="tabpanel" aria-labelledby="tabPlayer">
-        <!-- Background Radar Grid & Coordinates -->
-        <div class="screen-grid"></div>
-        <div class="screen-coords">SEC-08 // LAT 40.71° N</div>
-        <div class="status-led-badge">
-          <span class="led-blink"></span>
-          <span id="statusText">ONLINE</span>
-        </div>
-
-        <!-- Hanging Web Line & Swaying Pixel Spider -->
-        <div class="web-assembly" id="webAssembly">
-          <div class="web-anchor"></div>
-          <div class="web-line"></div>
-          <div class="spider-sway-container" id="spiderContainer">
-            <div class="spider" id="spiderMascot" title="Click to poke the spider!">
-              <div class="spider-eyes">
-                <span class="spider-eye left"></span>
-                <span class="spider-eye right"></span>
-              </div>
-              <div class="spider-emblem"></div>
-              <div class="spider-legs left">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="spider-legs right">
-                <span></span><span></span><span></span>
+        <!-- ==========================================
+             VIEW 1: NOW PLAYING SCREEN (SPIDEY ON WEB)
+             ========================================== -->
+        <section class="screen-view active" id="viewPlayer" role="tabpanel">
+          
+          <!-- Hanging Web Line & Hanging Upside-Down Spidey -->
+          <div class="hanging-web-rig" id="hangingWebRig">
+            <div class="web-origin-point"></div>
+            <div class="web-thread"></div>
+            <div class="hanging-spidey-anchor" id="hangingSpideyAnchor">
+              <div class="pixel-hanging-spidey" id="hangingSpidey" title="Click to swing Spidey!">
+                <!-- Upside down pixel spider character -->
+                <div class="spidey-torso">
+                  <div class="spidey-head">
+                    <span class="head-eye left"></span>
+                    <span class="head-eye right"></span>
+                  </div>
+                  <div class="spidey-chest-symbol"></div>
+                  <div class="spidey-arm arm-l"></div>
+                  <div class="spidey-arm arm-r"></div>
+                  <div class="spidey-leg leg-l"></div>
+                  <div class="spidey-leg leg-r"></div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Track Info Details -->
-        <div class="track-info-box">
-          <div class="now-playing-tag">MISSION AUDIO STREAM</div>
-          <div class="track-name" id="trackTitleDisplay">
-            <span class="track-num-badge" id="trackNumberBadge">01</span>
-            <b id="tName1">ARACHNID ALLEY</b>
-          </div>
-          <div class="track-meta" id="trackArtist">CHIPTUNE SECTOR // 128 BPM</div>
-        </div>
+          <!-- Center Mission Status & Track Details -->
+          <div class="screen-center-hud">
+            <div class="mission-welcome-text">
+              WELCOME TO THE SPIDEY TRACKER.<br>
+              INTERACT WITH THE MAP TO VIEW<br>
+              SPIDER-MAN SIGHTINGS<br>
+              ALL OVER THE WORLD.
+            </div>
 
-        <!-- Animated Equalizer Spectrum -->
-        <div class="eq-wrapper">
-          <div class="eq-label">FREQ / EQ</div>
-          <div class="eq" id="equalizer" aria-label="Audio Visualizer">
-            <div class="eq-bar" style="--h: 12px; --delay: 0s;"></div>
-            <div class="eq-bar" style="--h: 24px; --delay: 0.15s;"></div>
-            <div class="eq-bar" style="--h: 18px; --delay: 0.3s;"></div>
-            <div class="eq-bar" style="--h: 28px; --delay: 0.45s;"></div>
-            <div class="eq-bar" style="--h: 14px; --delay: 0.6s;"></div>
-            <div class="eq-bar" style="--h: 22px; --delay: 0.2s;"></div>
-            <div class="eq-bar" style="--h: 16px; --delay: 0.5s;"></div>
-            <div class="eq-bar" style="--h: 26px; --delay: 0.35s;"></div>
-          </div>
-        </div>
-      </main>
+            <!-- Active Track Box -->
+            <div class="current-track-badge">
+              <div class="track-sec-tag" id="trackSecTag">SECTOR 01 // 128 BPM</div>
+              <div class="track-title-text" id="trackTitleDisplay">
+                <span class="track-num-prefix" id="trackNumPrefix">[01]</span>
+                <span id="tName1">ARACHNID ALLEY</span>
+              </div>
+            </div>
 
-      <!-- SCREEN 2: TRACK MAP VIEW -->
-      <section class="mapscreen" id="mapscreen" role="tabpanel" aria-labelledby="tabMap" aria-hidden="true">
-        <div class="map-grid-overlay"></div>
-        <div class="map-header-hud">
-          <span class="hud-tag">MISSION TRACK MAP</span>
-          <span class="hud-stats" id="mapUnexploredCount">6 ACTIVE NODES</span>
-        </div>
+            <!-- Equalizer Spectrum Bars -->
+            <div class="spectrum-visualizer" id="spectrumViz" aria-label="Audio Visualizer">
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+              <div class="spec-bar"></div>
+            </div>
 
-        <!-- Radial Cyber Radar Radar Widget in corner -->
-        <div class="mini-radar">
-          <div class="radar-sweep"></div>
-          <div class="radar-rings"></div>
-          <div class="radar-dot dot-1"></div>
-          <div class="radar-dot dot-2"></div>
-        </div>
-
-        <!-- Connection Web Lines between nodes -->
-        <svg class="map-websvg" id="mapWebSvg" aria-hidden="true">
-          <!-- Dynamically populated web lines -->
-        </svg>
-
-        <!-- Timeline Axis -->
-        <div class="timeline"></div>
-
-        <!-- Pins Container -->
-        <div class="pins-container" id="pinsContainer">
-          <!-- Dynamically generated pins -->
-        </div>
-
-        <div class="map-legend">
-          <span class="legend-item"><span class="legend-dot red"></span> ACTIVE</span>
-          <span class="legend-item"><span class="legend-dot green"></span> UNLOCKED</span>
-          <span class="legend-item"><span class="legend-dot locked"></span> BONUS</span>
-        </div>
-      </section>
-
-      <!-- Shared Control Bar -->
-      <section class="controlbar" aria-label="Playback Controls">
-        <div class="mascot-badge" id="mascotBadge" title="Spider Mascot Badge">
-          <span class="mascot-glyph">🕷</span>
-        </div>
-
-        <button class="playpause" id="playBtn" aria-label="Play or Pause">
-          <span id="playIcon">▶</span> <span id="playText">PLAY</span>
-        </button>
-
-        <!-- Seek Scrubber -->
-        <div class="seek-section">
-          <div class="time-display" id="timeElapsed">00:00</div>
-          <div class="seek-bar-container" id="seekContainer" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" title="Click or drag to seek">
-            <div class="seek-track">
-              <div class="seek-fill" id="seekFill"></div>
-              <div class="seek-thumb" id="seekThumb"></div>
+            <!-- Track Option Buttons -->
+            <div class="screen-option-row">
+              <button class="opt-btn active" id="screenPlayBtn">
+                <span id="screenPlayIcon">▶</span> <span id="screenPlayText">SOUND ON</span>
+              </button>
+              <button class="opt-btn" id="screenMapBtn">
+                VIEW MAP
+              </button>
             </div>
           </div>
-          <div class="time-display total" id="timeTotal">01:45</div>
-        </div>
 
-        <!-- Volume Control -->
-        <div class="vol-control">
-          <button class="vol-btn" id="volBtn" title="Mute / Unmute" aria-label="Mute or Unmute">
-            <span id="volIcon">🔊</span>
-          </button>
-          <div class="vol-slider-wrap" id="volWrap">
-            <input type="range" id="volSlider" class="pixel-slider" min="0" max="100" value="80" aria-label="Volume">
+        </section>
+
+        <!-- ==========================================
+             VIEW 2: TRACK MAP SCREEN (WORLD SIGHTINGS)
+             ========================================== -->
+        <section class="screen-view" id="viewMap" role="tabpanel" aria-hidden="true">
+          <!-- World Map Outline / Grid -->
+          <div class="map-world-grid"></div>
+          
+          <!-- HUD Header -->
+          <div class="map-top-hud">
+            <span class="map-hud-pill"><span class="rec-dot"></span> SIGHTINGS RADAR</span>
+            <span class="map-hud-counter" id="unexploredCounter">6 SIGHTINGS DETECTED</span>
           </div>
-        </div>
-      </section>
 
-      <!-- Footer Action Row -->
-      <footer class="footrow">
-        <button class="foot-btn" id="prevBtn" aria-label="Previous Track">
+          <!-- Web Lines Connecting Nodes -->
+          <svg class="map-connections-svg" id="mapSvg" aria-hidden="true"></svg>
+
+          <!-- Timeline Grid Axis -->
+          <div class="map-timeline-axis"></div>
+
+          <!-- Interactive Track Map Pins -->
+          <div class="map-pins-layer" id="mapPinsLayer"></div>
+
+          <!-- Mini Radar Widget in Bottom Right -->
+          <div class="map-radar-widget">
+            <div class="radar-beam"></div>
+            <div class="radar-concentric"></div>
+            <div class="radar-ping p1"></div>
+            <div class="radar-ping p2"></div>
+            <span class="radar-tag">GEO-SCAN</span>
+          </div>
+
+          <!-- Map Legend -->
+          <div class="map-footer-legend">
+            <span class="leg-item"><span class="leg-dot red"></span> ACTIVE SIGHTING</span>
+            <span class="leg-item"><span class="leg-dot green"></span> UNEXPLORED</span>
+            <span class="leg-item"><span class="leg-dot locked"></span> BONUS CLASSIFIED</span>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- Bottom Bezel Control Bar -->
+      <div class="bezel-bottom-control">
+        
+        <!-- Bottom Left Crouching Pixel Spidey Mascot on Bezel Edge -->
+        <div class="bezel-crouching-spidey" id="crouchingSpidey" title="Spidey on duty!">
+          <div class="spidey-mini-sprite"></div>
+        </div>
+
+        <!-- Center Wide Dark Ticker Marquee / Seek Scrubber -->
+        <div class="marquee-control-pill" id="marqueePill">
+          <div class="marquee-content-wrap">
+            <div class="marquee-ticker" id="marqueeTicker">
+              SELECT SOUND OPTION • SPIDEY ♪ TRACKER // 8-BIT AUDIO ACTIVE • CLICK ANY PIN ON MAP TO TRACK SIGHTINGS
+            </div>
+            <!-- Progress Bar Overlay inside Marquee -->
+            <div class="marquee-seek-layer" id="seekLayer" role="progressbar" aria-valuenow="0" tabindex="0" title="Click to seek">
+              <div class="seek-fill-bar" id="seekFill"></div>
+              <div class="seek-thumb-node" id="seekThumb"></div>
+            </div>
+          </div>
+          <div class="marquee-time-display" id="timeDisplay">00:00 / 01:45</div>
+        </div>
+
+        <!-- Speaker Mute Button -->
+        <button class="bezel-speaker-btn" id="volBtn" title="Toggle Sound / Mute" aria-label="Volume Mute">
+          <span class="speaker-icon" id="volIcon">🔊</span>
+        </button>
+
+      </div>
+
+      <!-- Lower Gold Buttons Row -->
+      <div class="bezel-lower-bar">
+        <button class="gold-arcade-btn left" id="prevBtn" aria-label="Previous Track">
           ⏮ PREV TRACK
         </button>
-        <div class="audio-mode-pill" id="audioModePill" title="Audio Engine: Real Web-Audio Chiptune Synthesizer">
-          SYNTH: <span id="synthStatus">8-BIT</span>
+        
+        <div class="brand-footer-text">
+          SPIDEY PLAYER // RETRO EDITION
         </div>
-        <button class="foot-btn" id="nextBtn" aria-label="Next Track">
+
+        <button class="gold-arcade-btn right" id="nextBtn" aria-label="Next Track">
           NEXT TRACK ⏭
         </button>
-      </footer>
-
-    </div>
-
-    <!-- Bottom Bezel Details -->
-    <div class="bezel-bottom">
-      <div class="screw bottom-left"></div>
-      <div class="speaker-grille">
-        <span></span><span></span><span></span><span></span><span></span>
-        <span></span><span></span><span></span><span></span><span></span>
       </div>
-      <div class="serial-tag">MODEL SP-8BIT // REV 2.4</div>
-      <div class="screw bottom-right"></div>
+
     </div>
   </div>
 
-  <!-- Retro Slide-out Menu / Modal Drawer -->
+  <!-- Slide-out Drawer for Full Tracklist & Custom Audio -->
   <div class="menu-drawer" id="menuDrawer" aria-hidden="true">
     <div class="drawer-header">
-      <span class="drawer-title">MISSION TRACKS</span>
+      <span class="drawer-title">MISSION AUDIO LOG</span>
       <button class="close-drawer-btn" id="closeDrawerBtn">✖</button>
     </div>
     <div class="drawer-body">
-      <div class="tracklist" id="drawerTracklist">
-        <!-- Populated via JS -->
-      </div>
+      <div class="tracklist" id="drawerTracklist"></div>
+      
       <div class="drawer-section">
-        <div class="drawer-subtitle">AUDIO SOURCE</div>
+        <div class="drawer-subtitle">LOAD AUDIO FILE</div>
         <label class="custom-file-label" for="audioFileInput">
-          📂 LOAD CUSTOM AUDIO
+          📂 UPLOAD CUSTOM TRACK
         </label>
         <input type="file" id="audioFileInput" accept="audio/*" style="display:none;">
       </div>
+
       <div class="drawer-section">
-        <div class="drawer-subtitle">KEYBOARD SHORTCUTS</div>
+        <div class="drawer-subtitle">KEYBOARD CONTROLS</div>
         <ul class="shortcut-list">
           <li><span>[SPACE]</span> Play / Pause</li>
           <li><span>[← / →]</span> Prev / Next Track</li>
-          <li><span>[M]</span> Mute Sound</li>
-          <li><span>[T]</span> Switch View Tab</li>
+          <li><span>[M]</span> Mute / Unmute</li>
+          <li><span>[T]</span> Switch View (Player / Map)</li>
         </ul>
       </div>
     </div>
