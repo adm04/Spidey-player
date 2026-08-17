@@ -1172,9 +1172,13 @@ body {
 
 .model-spec-text {
   font-size: 7px;
-  color: var(--frame-blue);
+  color: var(--gold);
   letter-spacing: 1px;
-  opacity: 0.9;
+  background: rgba(9, 23, 36, 0.85);
+  border: 1px solid var(--frame-dark);
+  padding: 3px 8px;
+  box-shadow: 0 1px 0 #000;
+  text-shadow: 1px 1px 0 #000;
 }
 
 /* ==========================================================================
@@ -1572,7 +1576,8 @@ body {
   }
 
   .model-spec-text {
-    display: none;
+    font-size: 5px;
+    padding: 2px 4px;
   }
 
   .speaker-grille-vents span {
