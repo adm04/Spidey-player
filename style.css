@@ -1257,6 +1257,18 @@ body {
   text-shadow: 1px 1px 0 #000;
 }
 
+.creator-link {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: all 0.1s;
+}
+
+.creator-link:hover {
+  color: var(--cream);
+  text-shadow: 0 0 5px rgba(242, 193, 78, 0.8);
+}
+
 /* ==========================================================================
    SLIDE-OUT MENU DRAWER
    ========================================================================== */
