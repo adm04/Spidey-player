@@ -210,8 +210,8 @@ body {
    MAIN ARCADE MONITOR CASING & BEZEL
    ========================================================================== */
 .monitor-wrapper {
-  width: 920px;
-  max-width: 100%;
+  width: 1060px;
+  max-width: 95vw;
   position: relative;
   box-sizing: border-box;
 }
@@ -230,7 +230,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 10px 14px 12px;
+  padding: 12px 16px 14px;
   border-radius: 4px;
   box-sizing: border-box;
   width: 100%;
@@ -403,7 +403,7 @@ body {
   background: var(--screen-dark);
   border: 6px solid #060d13;
   border-radius: 4px;
-  min-height: 330px;
+  min-height: 380px;
   position: relative;
   overflow: hidden;
   box-shadow: 
@@ -426,12 +426,12 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 300px;
-  height: 300px;
+  width: 380px;
+  height: 380px;
   transform: translate(-50%, -50%);
-  background-image: radial-gradient(circle, transparent 20%, rgba(58, 168, 207, 0.05) 20%, rgba(58, 168, 207, 0.05) 22%, transparent 22%);
+  background-image: radial-gradient(circle, transparent 20%, rgba(58, 168, 207, 0.06) 20%, rgba(58, 168, 207, 0.06) 22%, transparent 22%);
   background-size: 40px 40px;
-  opacity: 0.5;
+  opacity: 0.6;
   clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%);
 }
 
@@ -480,8 +480,8 @@ body {
 /* Corner Web Accents */
 .retro-corner-web {
   position: absolute;
-  width: 44px;
-  height: 44px;
+  width: 32px;
+  height: 32px;
   z-index: 3;
   pointer-events: none;
   opacity: 0.35;
@@ -538,7 +538,7 @@ body {
 
 .web-thread {
   width: 2px;
-  height: 54px;
+  height: 64px;
   background: var(--cream);
   box-shadow: 0 0 6px rgba(234, 246, 251, 0.9);
 }
@@ -604,11 +604,12 @@ body {
   flex-direction: column;
   align-items: center;
   transition: transform 0.15s ease;
+  transform: scale(1.15);
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
 }
 
 .pixel-hanging-spidey:hover {
-  transform: scale(1.2);
+  transform: scale(1.35);
 }
 
 .pixel-spidey-svg {
@@ -624,58 +625,62 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 14px;
   z-index: 4;
-  margin-top: 110px;
-  margin-bottom: 4px;
+  margin-top: 125px;
+  margin-bottom: 8px;
 }
 
 .mission-welcome-text {
-  font-size: 8px;
-  line-height: 1.8;
+  font-size: 8.5px;
+  line-height: 1.85;
   color: var(--blue-txt);
-  letter-spacing: 1px;
+  letter-spacing: 1.2px;
   text-shadow: 2px 2px 0 #000;
-  max-width: 480px;
+  max-width: 560px;
 }
 
 .current-track-badge {
   background: rgba(9, 23, 36, 0.85);
   border: 2px solid var(--frame-blue);
-  padding: 5px 12px;
+  padding: 7px 16px;
   box-shadow: 0 3px 0 #000;
 }
 
 .track-sec-tag {
-  font-size: 6px;
-  color: var(--cyan-hud);
-  margin-bottom: 3px;
+  font-size: 6.5px;
+  color: var(--frame-blue);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
 }
 
 .track-title-text {
-  font-size: 10px;
+  font-size: 10.5px;
   color: var(--cream);
   letter-spacing: 1px;
 }
 
 .track-num-prefix {
   color: var(--red);
-  margin-right: 4px;
 }
 
-/* Spectrum Visualizer */
+/* Spectrum Visualizer (12 Discrete Vertical EQ Bars) */
 .spectrum-visualizer {
   display: flex;
-  gap: 4px;
   align-items: flex-end;
-  height: 18px;
-  padding: 2px 8px;
+  gap: 4px;
+  height: 20px;
+  padding: 2px 6px;
+  background: rgba(6, 13, 19, 0.6);
+  border-radius: 2px;
 }
 
 .spec-bar {
   width: 5px;
-  height: 8px;
-  background: var(--cyan-hud);
+  height: 3px;
+  background: var(--blue-txt);
+  transition: height 0.08s ease;
+  box-shadow: 0 0 4px rgba(96, 210, 247, 0.5);
   animation: spec-pulse 0.7s infinite alternate ease-in-out;
 }
 
