@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Progress Polling
+  // Progress Polling & Automatic Track Advancement
   function startProgressPolling() {
     stopProgressPolling();
     progressInterval = setInterval(() => {
@@ -362,12 +362,24 @@ document.addEventListener('DOMContentLoaded', () => {
       let dur = BRAND_NEW_DAY_TRACKS[currentTrackIndex].duration;
 
       if (currentMode === 'youtube' && ytReady && ytPlayer && ytPlayer.getCurrentTime) {
-        curr = ytPlayer.getCurrentTime() || 0;
-        const ytDur = ytPlayer.getDuration();
-        if (ytDur > 0) dur = ytDur;
+        try {
+          curr = ytPlayer.getCurrentTime() || 0;
+          const ytDur = ytPlayer.getDuration();
+          if (ytDur > 0) dur = ytDur;
+        } catch(e) {}
       } else if (window.chiptuneSynth) {
         curr = window.chiptuneSynth.currentTime;
         dur = window.chiptuneSynth.duration;
+      } else if (realAudio) {
+        curr = realAudio.currentTime;
+        dur = realAudio.duration || dur;
+      }
+
+      // Check if track ended (Auto Next Track)
+      if (dur > 5 && curr >= dur - 0.6) {
+        console.log("Auto-advancing to next track");
+        selectTrack(currentTrackIndex + 1, true);
+        return;
       }
 
       const pct = dur > 0 ? (curr / dur) * 100 : 0;
@@ -709,6 +721,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     animate();
+  }
+
+  // Hook onEnded for Auto-Play Next Song
+  if (window.chiptuneSynth) {
+    window.chiptuneSynth.onEnded = () => {
+      console.log("Chiptune synth finished track -> playing next track");
+      selectTrack(currentTrackIndex + 1, true);
+    };
+  }
+
+  if (realAudio) {
+    realAudio.addEventListener('ended', () => {
+      console.log("Audio tag finished track -> playing next track");
+      selectTrack(currentTrackIndex + 1, true);
+    });
   }
 
   // Init

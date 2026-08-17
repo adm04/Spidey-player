@@ -134,17 +134,24 @@ class ChiptuneSynth {
     this.isPlaying = true;
     
     const stepDurationMs = (60 / this.bpm / 4) * 1000; // 16th note step
+    const intervalSec = stepDurationMs / 1000;
     
     if (this.timerId) clearInterval(this.timerId);
     
     this.timerId = setInterval(() => {
       if (!this.isPlaying) return;
+      this.currentTime += intervalSec;
       this.step();
-      this.currentTime += (stepDurationMs / 1000);
+
       if (this.currentTime >= this.duration) {
-        this.currentTime = 0;
-        this.stepIndex = 0;
+        if (this.onEnded) {
+          this.onEnded();
+        } else {
+          this.currentTime = 0;
+          this.stepIndex = 0;
+        }
       }
+      
       if (this.onTimeUpdate) {
         this.onTimeUpdate(this.currentTime, this.duration);
       }
