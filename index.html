@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css?v=12.0">
+  <link rel="stylesheet" href="style.css?v=15.0">
 </head>
 <body>
 
@@ -19,6 +19,44 @@
 
   <!-- Screen Scanline & Phosphor Overlay -->
   <div class="crt-overlay" id="crtOverlay"></div>
+
+  <!-- Retro Arcade Startup Sequence Overlay -->
+  <div class="retro-intro-overlay" id="retroIntroOverlay">
+    <div class="intro-box">
+      <!-- Big Pixel-Art Spidey Face with Blinking Eyes -->
+      <div class="intro-spidey-mask">
+        <svg class="intro-mask-svg" viewBox="0 0 100 100" shape-rendering="crispEdges">
+          <!-- Outer Circle -->
+          <circle cx="50" cy="50" r="46" fill="#e13a3a" stroke="#000000" stroke-width="4"/>
+          <!-- Web Lines -->
+          <circle cx="50" cy="50" r="14" fill="none" stroke="#000000" stroke-width="2.5"/>
+          <circle cx="50" cy="50" r="28" fill="none" stroke="#000000" stroke-width="2.5"/>
+          <line x1="50" y1="4" x2="50" y2="96" stroke="#000000" stroke-width="2.5"/>
+          <line x1="4" y1="50" x2="96" y2="50" stroke="#000000" stroke-width="2.5"/>
+          <line x1="16" y1="16" x2="84" y2="84" stroke="#000000" stroke-width="2.5"/>
+          <line x1="16" y1="84" x2="84" y2="16" stroke="#000000" stroke-width="2.5"/>
+          <!-- Left Eye -->
+          <g class="intro-eye-group left">
+            <path d="M 44 54 C 44 68 34 76 26 70 C 20 65 18 48 24 32 C 26 28 32 36 44 54 Z" fill="#000000"/>
+            <path d="M 41 53 C 41 64 34 70 28 66 C 24 62 22 49 27 36 C 28 34 32 40 41 53 Z" fill="#ffffff"/>
+          </g>
+          <!-- Right Eye -->
+          <g class="intro-eye-group right">
+            <path d="M 56 54 C 56 68 66 76 74 70 C 80 65 82 48 76 32 C 74 28 68 36 56 54 Z" fill="#000000"/>
+            <path d="M 59 53 C 59 64 66 70 72 66 C 76 62 78 49 73 36 C 72 34 68 40 59 53 Z" fill="#ffffff"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Intro Typography & Boot Sequence -->
+      <div class="intro-title">★ SPIDEY PLAYER ★</div>
+      <div class="intro-status-text" id="introStatusText">INITIALIZING SYSTEM...</div>
+      <div class="intro-progress-bar">
+        <div class="intro-progress-fill" id="introProgressFill"></div>
+      </div>
+      <div class="intro-tap-prompt" id="introTapPrompt">[ CLICK / TAP TO START ]</div>
+    </div>
+  </div>
 
   <!-- Outer Fullscreen Arcade Monitor Casing -->
   <div class="monitor-wrapper">

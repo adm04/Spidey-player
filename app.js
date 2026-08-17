@@ -122,6 +122,52 @@ function onPlayerError(e) {
 document.addEventListener('DOMContentLoaded', () => {
   loadYouTubeAPI();
 
+  // Retro Arcade Boot Intro Sequence
+  const introOverlay = document.getElementById('retroIntroOverlay');
+  const introStatusText = document.getElementById('introStatusText');
+  const introProgressFill = document.getElementById('introProgressFill');
+  let introDismissed = false;
+
+  function dismissIntro() {
+    if (introDismissed || !introOverlay) return;
+    introDismissed = true;
+    introOverlay.classList.add('hidden');
+    if (window.chiptuneSynth) {
+      window.chiptuneSynth.init();
+      window.chiptuneSynth.playBeep(587, 0.08, 'triangle');
+      setTimeout(() => window.chiptuneSynth.playBeep(880, 0.1, 'square'), 80);
+    }
+    setTimeout(() => {
+      if (introOverlay && introOverlay.parentNode) introOverlay.remove();
+    }, 600);
+  }
+
+  if (introOverlay) {
+    introOverlay.addEventListener('click', dismissIntro);
+    introOverlay.addEventListener('touchstart', dismissIntro);
+
+    const steps = [
+      { text: "INITIALIZING SPIDEY AUDIO...", progress: 30, delay: 400 },
+      { text: "SCANNING SOUNDTRACK MATRIX...", progress: 65, delay: 900 },
+      { text: "SPIDEY SENSE ONLINE!", progress: 100, delay: 1500 },
+      { text: "SYSTEM READY!", progress: 100, delay: 2000 }
+    ];
+
+    steps.forEach(({ text, progress, delay }) => {
+      setTimeout(() => {
+        if (!introDismissed) {
+          if (introStatusText) introStatusText.textContent = text;
+          if (introProgressFill) introProgressFill.style.width = `${progress}%`;
+          if (window.chiptuneSynth) window.chiptuneSynth.playBeep(440 + progress * 4, 0.03);
+        }
+      }, delay);
+    });
+
+    setTimeout(() => {
+      dismissIntro();
+    }, 2400);
+  }
+
   const viewPlayer = document.getElementById('viewPlayer');
   const viewMap = document.getElementById('viewMap');
   const sideTabPlayer = document.getElementById('sideTabPlayer');
