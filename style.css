@@ -79,6 +79,7 @@ body {
   width: 920px;
   max-width: 100%;
   position: relative;
+  box-sizing: border-box;
 }
 
 .monitor-frame {
@@ -97,6 +98,9 @@ body {
   flex-direction: column;
   padding: 10px 14px 12px;
   border-radius: 4px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* ==========================================================================
@@ -788,6 +792,10 @@ body {
   background: #091724;
   border: 3px solid var(--frame-dark);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 /* Red Circular Mascot Badge */
@@ -831,6 +839,7 @@ body {
   align-items: center;
   gap: 6px;
   box-shadow: inset -2px -2px 0 #04080d;
+  flex-shrink: 0;
   transition: all 0.1s;
 }
 
@@ -852,6 +861,7 @@ body {
   min-width: 44px;
   text-align: center;
   letter-spacing: 0.5px;
+  flex-shrink: 0;
 }
 
 .time-readout.total {
@@ -861,6 +871,7 @@ body {
 /* Seek Bar Track & Golden Thumb */
 .seek-track-wrapper {
   flex: 1;
+  min-width: 0;
   height: 24px;
   background: #04080d;
   border: 2px solid var(--frame-blue);
@@ -868,6 +879,7 @@ body {
   cursor: pointer;
   padding: 2px;
   outline: none;
+  box-sizing: border-box;
 }
 
 .seek-track-bg {
