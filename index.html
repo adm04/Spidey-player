@@ -71,11 +71,6 @@
              ========================================== -->
         <section class="screen-view active" id="viewPlayer" role="tabpanel">
           
-          <!-- YouTube Video / CRT Screen Box -->
-          <div class="yt-video-wrapper" id="ytVideoWrapper">
-            <div id="ytPlayerContainer"></div>
-          </div>
-
           <!-- Hanging Web Line & Hanging Upside-Down Spidey -->
           <div class="hanging-web-rig" id="hangingWebRig">
             <div class="web-origin-point"></div>
@@ -129,13 +124,6 @@
               <div class="spec-bar"></div>
               <div class="spec-bar"></div>
               <div class="spec-bar"></div>
-            </div>
-
-            <!-- Audio Stream Mode Toggle Button -->
-            <div class="stream-control-row">
-              <button class="stream-mode-btn" id="streamModeBtn">
-                MODE: <span id="streamModeText">YOUTUBE STREAM</span>
-              </button>
             </div>
           </div>
 
@@ -210,10 +198,18 @@
         <!-- Total Time -->
         <div class="time-readout total" id="timeTotal">01:45</div>
 
-        <!-- Volume Icon Button -->
-        <button class="retro-vol-btn" id="volBtn" title="Toggle Mute" aria-label="Volume">
-          <span id="volIcon">🔊</span>
-        </button>
+        <!-- Volume Up/Down & Slider Control -->
+        <div class="vol-control-wrap">
+          <button class="retro-vol-btn" id="volBtn" title="Volume / Mute (Hover for Slider)" aria-label="Volume">
+            <span id="volIcon">🔊</span>
+          </button>
+          <div class="vol-popup-panel" id="volPopup">
+            <button class="vol-step-btn" id="volDownBtn" title="Volume Down">-</button>
+            <input type="range" id="volSlider" class="pixel-vol-range" min="0" max="100" value="80" aria-label="Volume Slider">
+            <button class="vol-step-btn" id="volUpBtn" title="Volume Up">+</button>
+            <span class="vol-pct-text" id="volPctText">80%</span>
+          </div>
+        </div>
       </section>
 
       <!-- ==========================================
@@ -278,11 +274,14 @@
     </div>
   </div>
 
+  <!-- Background YouTube Audio Engine -->
+  <div id="ytPlayerContainer" style="position:fixed; bottom:-999px; right:-999px; width:200px; height:150px; opacity:0.01; pointer-events:none;"></div>
+
   <!-- Real Audio Element for Fallback / Custom Audio Files -->
   <audio id="realAudio" preload="auto"></audio>
 
   <!-- Script Files -->
-  <script src="chiptune-synth.js?v=3.5"></script>
-  <script src="app.js?v=3.5"></script>
+  <script src="chiptune-synth.js?v=4.0"></script>
+  <script src="app.js?v=4.0"></script>
 </body>
 </html>

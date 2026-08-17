@@ -428,19 +428,69 @@ document.addEventListener('DOMContentLoaded', () => {
     visualizerRaf = requestAnimationFrame(startVisualizerLoop);
   }
 
-  // Volume / Mute
+  // Volume Controls (Slider, Stepper & Mute Toggle)
+  const volSlider = document.getElementById('volSlider');
+  const volDownBtn = document.getElementById('volDownBtn');
+  const volUpBtn = document.getElementById('volUpBtn');
+  const volPctText = document.getElementById('volPctText');
+  let currentVolume = 80;
+
+  function updateVolume(val) {
+    currentVolume = Math.max(0, Math.min(100, val));
+    if (volSlider) volSlider.value = currentVolume;
+    if (volPctText) volPctText.textContent = `${currentVolume}%`;
+
+    // Apply to YouTube Player
+    if (ytPlayer && ytPlayer.setVolume) {
+      ytPlayer.setVolume(currentVolume);
+      if (currentVolume > 0 && ytPlayer.unMute) ytPlayer.unMute();
+      if (currentVolume === 0 && ytPlayer.mute) ytPlayer.mute();
+    }
+
+    // Apply to Synthesizer
+    if (window.chiptuneSynth) {
+      window.chiptuneSynth.setVolume(currentVolume / 100);
+    }
+
+    // Apply to HTML5 Audio
+    if (realAudio) {
+      realAudio.volume = currentVolume / 100;
+    }
+
+    isMuted = currentVolume === 0;
+    if (volIcon) {
+      volIcon.textContent = isMuted ? '🔇' : currentVolume < 40 ? '🔉' : '🔊';
+    }
+  }
+
+  if (volSlider) {
+    volSlider.addEventListener('input', (e) => {
+      updateVolume(parseInt(e.target.value));
+    });
+  }
+
+  if (volDownBtn) {
+    volDownBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.chiptuneSynth.playBeep(400, 0.03);
+      updateVolume(currentVolume - 10);
+    });
+  }
+
+  if (volUpBtn) {
+    volUpBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.chiptuneSynth.playBeep(700, 0.03);
+      updateVolume(currentVolume + 10);
+    });
+  }
+
   volBtn.addEventListener('click', () => {
     window.chiptuneSynth.playBeep(600, 0.04);
     if (isMuted) {
-      if (ytPlayer && ytPlayer.unMute) ytPlayer.unMute();
-      window.chiptuneSynth.setVolume(0.8);
-      volIcon.textContent = '🔊';
-      isMuted = false;
+      updateVolume(80);
     } else {
-      if (ytPlayer && ytPlayer.mute) ytPlayer.mute();
-      window.chiptuneSynth.setVolume(0);
-      volIcon.textContent = '🔇';
-      isMuted = true;
+      updateVolume(0);
     }
   });
 
