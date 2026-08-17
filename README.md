@@ -20,7 +20,9 @@
 
 ## 📸 Preview
 
-![Spidey Player Screenshot](screenshot.png)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/adm04/Spidey-player/main/screenshot.png" alt="Spidey Player Screenshot" width="100%">
+</p>
 
 ---
 
