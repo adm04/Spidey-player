@@ -274,9 +274,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateUI();
 
-    if (currentMode === 'youtube' && ytReady && ytPlayer && ytPlayer.loadVideoById) {
-      ytPlayer.loadVideoById(track.videoId);
-      if (!autoPlay) ytPlayer.pauseVideo();
+    if (currentMode === 'youtube' && ytReady && ytPlayer) {
+      try {
+        if (autoPlay) {
+          if (ytPlayer.loadVideoById) {
+            ytPlayer.loadVideoById(track.videoId);
+          }
+        } else {
+          if (ytPlayer.cueVideoById) {
+            ytPlayer.cueVideoById(track.videoId);
+          }
+        }
+      } catch(e) {
+        console.warn("YouTube cue error, using synth:", e);
+        window.chiptuneSynth.setTrack(currentTrackIndex % 6);
+      }
     } else {
       window.chiptuneSynth.setTrack(currentTrackIndex % 6);
       if (autoPlay) window.chiptuneSynth.play();
@@ -308,19 +320,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function togglePlay() {
-    window.chiptuneSynth.playBeep(440, 0.04);
+    // Unlock Web Audio Context on user gesture
+    if (window.chiptuneSynth) {
+      window.chiptuneSynth.init();
+      window.chiptuneSynth.playBeep(440, 0.04);
+    }
+
     if (isPlaying) {
       if (currentMode === 'youtube' && ytReady && ytPlayer && ytPlayer.pauseVideo) {
-        ytPlayer.pauseVideo();
-      } else {
-        window.chiptuneSynth.pause();
+        try { ytPlayer.pauseVideo(); } catch(e) {}
       }
+      if (window.chiptuneSynth) window.chiptuneSynth.pause();
       setPlayingState(false);
     } else {
+      let ytSuccess = false;
       if (currentMode === 'youtube' && ytReady && ytPlayer && ytPlayer.playVideo) {
-        ytPlayer.playVideo();
-      } else {
-        window.chiptuneSynth.play();
+        try {
+          ytPlayer.playVideo();
+          ytSuccess = true;
+        } catch(e) {
+          console.warn("YouTube play error, falling back to synth:", e);
+        }
+      }
+      
+      if (!ytSuccess || currentMode === 'synth') {
+        if (window.chiptuneSynth) {
+          window.chiptuneSynth.setTrack(currentTrackIndex % 6);
+          window.chiptuneSynth.play();
+        }
       }
       setPlayingState(true);
     }
