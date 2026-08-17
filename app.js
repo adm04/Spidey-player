@@ -554,15 +554,15 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Character Click Animations
-  hangingSpidey.addEventListener('click', () => {
-    window.chiptuneSynth.playBeep(784, 0.1, 'triangle');
-    hangingSpideyAnchor.style.animation = 'none';
-    hangingSpidey.style.transform = 'scale(1.4) rotate(-25deg)';
-    setTimeout(() => {
-      hangingSpidey.style.transform = '';
-      hangingSpideyAnchor.style.animation = '';
-    }, 450);
-  });
+  if (hangingSpidey) {
+    hangingSpidey.addEventListener('click', () => {
+      window.chiptuneSynth.playBeep(784, 0.1, 'triangle');
+      hangingSpidey.style.transform = 'scale(1.35) rotate(-20deg)';
+      setTimeout(() => {
+        hangingSpidey.style.transform = '';
+      }, 400);
+    });
+  }
 
   mascotBadge.addEventListener('click', () => {
     window.chiptuneSynth.playBeep(880, 0.08, 'square');

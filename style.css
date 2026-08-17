@@ -331,13 +331,82 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 1: NOW PLAYING (SPIDEY HANGING ON WEB & YOUTUBE PLAYER)
+   VIEW 1: NOW PLAYING (SEAMLESS WEB RIG & BALANCED SPACING)
    ========================================================================== */
 #viewPlayer {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 16px 16px;
+  justify-content: flex-end;
+  padding: 0 16px 14px;
   position: relative;
+  min-height: 320px;
+}
+
+/* Corner Web Accents */
+.retro-corner-web {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.35;
+}
+
+.retro-corner-web.tl {
+  top: 0;
+  left: 0;
+  border-bottom: 1px dashed rgba(234, 246, 251, 0.4);
+  border-right: 1px dashed rgba(234, 246, 251, 0.4);
+  background: 
+    radial-gradient(circle at 0 0, transparent 40%, rgba(234, 246, 251, 0.12) 41%, transparent 44%),
+    radial-gradient(circle at 0 0, transparent 70%, rgba(234, 246, 251, 0.12) 71%, transparent 74%);
+}
+
+.retro-corner-web.tr {
+  top: 0;
+  right: 0;
+  border-bottom: 1px dashed rgba(234, 246, 251, 0.4);
+  border-left: 1px dashed rgba(234, 246, 251, 0.4);
+  background: 
+    radial-gradient(circle at 100% 0, transparent 40%, rgba(234, 246, 251, 0.12) 41%, transparent 44%),
+    radial-gradient(circle at 100% 0, transparent 70%, rgba(234, 246, 251, 0.12) 71%, transparent 74%);
+}
+
+/* Hanging Web Rig (Single Unified Pendulum Motion) */
+.hanging-web-rig {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: top center;
+  animation: spidey-pendulum 3s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  cursor: pointer;
+}
+
+@keyframes spidey-pendulum {
+  0% { transform: translateX(-50%) rotate(-6deg); }
+  50% { transform: translateX(-50%) rotate(6deg); }
+  100% { transform: translateX(-50%) rotate(-6deg); }
+}
+
+.web-origin-point {
+  width: 14px;
+  height: 3px;
+  background: var(--cream);
+  border: 1px solid #000;
+  border-top: none;
+  box-shadow: 0 0 6px rgba(234, 246, 251, 0.8);
+}
+
+.web-thread {
+  width: 2px;
+  height: 54px;
+  background: var(--cream);
+  box-shadow: 0 0 6px rgba(234, 246, 251, 0.9);
 }
 
 /* YouTube Video Screen Wrapper (Maintains valid dimensions for YouTube playback) */
@@ -394,39 +463,6 @@ body {
   color: var(--gold);
 }
 
-/* Hanging Web Rig */
-.hanging-web-rig {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-}
-
-.web-origin-point {
-  width: 10px;
-  height: 4px;
-  background: var(--cream);
-  border: 1px solid #000;
-}
-
-.web-thread {
-  width: 2px;
-  height: 60px;
-  background: var(--cream);
-  box-shadow: 0 0 6px rgba(234, 246, 251, 0.8);
-}
-
-.hanging-spidey-anchor {
-  transform-origin: top center;
-  animation: spidey-sway 2.4s ease-in-out infinite;
-  cursor: pointer;
-}
-
-@keyframes spidey-sway {
-  0%, 100% { transform: rotate(-7deg); }
-  50% { transform: rotate(7deg); }
-}
-
 /* Upside Down Hanging Pixel Spidey */
 .pixel-hanging-spidey {
   width: 36px;
@@ -480,32 +516,31 @@ body {
 .head-eye.right { transform: rotate(15deg); }
 
 .spidey-chest-symbol {
+  width: 8px;
+  height: 8px;
+  background: #060d13;
   position: absolute;
-  top: 5px;
+  top: 10px;
   left: 50%;
-  transform: translateX(-50%);
-  width: 7px;
-  height: 7px;
-  background: #000;
-  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  transform: translateX(-50%) rotate(45deg);
 }
 
 .spidey-arm {
   position: absolute;
-  top: 5px;
-  width: 5px;
-  height: 12px;
-  background: var(--blue-txt);
+  width: 6px;
+  height: 14px;
+  background: var(--red);
   border: 2px solid #000;
+  top: 6px;
 }
-.spidey-arm.arm-l { left: -6px; transform: rotate(20deg); }
-.spidey-arm.arm-r { right: -6px; transform: rotate(-20deg); }
+.spidey-arm.arm-l { left: -5px; transform: rotate(20deg); }
+.spidey-arm.arm-r { right: -5px; transform: rotate(-20deg); }
 
 .spidey-leg {
   position: absolute;
-  top: -5px;
+  top: -4px;
   width: 6px;
-  height: 11px;
+  height: 10px;
   background: var(--red);
   border: 2px solid #000;
 }
@@ -518,8 +553,10 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
+  gap: 12px;
   z-index: 4;
+  margin-top: 110px;
+  margin-bottom: 4px;
 }
 
 .mission-welcome-text {
