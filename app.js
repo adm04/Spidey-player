@@ -504,19 +504,19 @@ document.addEventListener('DOMContentLoaded', () => {
     window.chiptuneSynth.playBeep(523, 0.06);
     if (currentMode === 'youtube') {
       currentMode = 'synth';
-      synthStatus.textContent = '8-BIT';
-      if (streamModeText) streamModeText.textContent = '8-BIT SYNTH';
-      if (ytVideoWrapper) ytVideoWrapper.classList.remove('active');
-      if (hangingWebRig) hangingWebRig.style.display = 'flex';
-      if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
+      synthStatus.textContent = '8-BIT SYNTH';
+      if (ytPlayer && ytPlayer.pauseVideo) {
+        try { ytPlayer.pauseVideo(); } catch(e) {}
+      }
       window.chiptuneSynth.setTrack(currentTrackIndex % 6);
       if (isPlaying) window.chiptuneSynth.play();
     } else {
       currentMode = 'youtube';
-      synthStatus.textContent = 'STREAM';
-      if (streamModeText) streamModeText.textContent = 'YOUTUBE STREAM';
+      synthStatus.textContent = 'YOUTUBE STREAM';
       window.chiptuneSynth.pause();
-      if (ytPlayer && ytPlayer.playVideo && isPlaying) ytPlayer.playVideo();
+      if (ytPlayer && ytPlayer.playVideo && isPlaying) {
+        try { ytPlayer.playVideo(); } catch(e) {}
+      }
     }
   }
 
