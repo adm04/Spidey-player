@@ -76,7 +76,7 @@ body {
    MAIN ARCADE MONITOR CASING & BEZEL
    ========================================================================== */
 .monitor-wrapper {
-  width: 960px;
+  width: 920px;
   max-width: 100%;
   position: relative;
 }
@@ -212,10 +212,6 @@ body {
   transform: translateY(-1px);
 }
 
-.top-sq-btn:active {
-  transform: translateY(2px);
-}
-
 /* ==========================================================================
    LEFT BEZEL SIDE TABS
    ========================================================================== */
@@ -269,7 +265,7 @@ body {
   background: var(--screen-dark);
   border: 6px solid #060d13;
   border-radius: 4px;
-  min-height: 380px;
+  min-height: 330px;
   position: relative;
   overflow: hidden;
   box-shadow: 
@@ -292,8 +288,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 320px;
-  height: 340px;
+  width: 300px;
+  height: 300px;
   transform: translate(-50%, -50%);
   background-image: radial-gradient(circle, transparent 20%, rgba(58, 168, 207, 0.05) 20%, rgba(58, 168, 207, 0.05) 22%, transparent 22%);
   background-size: 40px 40px;
@@ -321,7 +317,7 @@ body {
   z-index: 3;
   width: 100%;
   height: 100%;
-  min-height: 380px;
+  min-height: 330px;
   display: none;
 }
 
@@ -336,7 +332,7 @@ body {
 #viewPlayer {
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px 20px;
+  padding: 0 16px 16px;
 }
 
 /* Hanging Web Rig */
@@ -356,7 +352,7 @@ body {
 
 .web-thread {
   width: 2px;
-  height: 70px;
+  height: 60px;
   background: var(--cream);
   box-shadow: 0 0 6px rgba(234, 246, 251, 0.8);
 }
@@ -374,8 +370,8 @@ body {
 
 /* Upside Down Hanging Pixel Spidey */
 .pixel-hanging-spidey {
-  width: 38px;
-  height: 46px;
+  width: 36px;
+  height: 44px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -388,8 +384,8 @@ body {
 }
 
 .spidey-torso {
-  width: 28px;
-  height: 38px;
+  width: 26px;
+  height: 36px;
   background: var(--red);
   border: 3px solid #060d13;
   border-radius: 40% 40% 50% 50%;
@@ -398,13 +394,13 @@ body {
 }
 
 .spidey-head {
-  width: 22px;
-  height: 20px;
+  width: 20px;
+  height: 18px;
   background: var(--red);
   border: 2px solid #060d13;
   border-radius: 50%;
   position: absolute;
-  bottom: -10px;
+  bottom: -9px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
@@ -414,43 +410,43 @@ body {
 }
 
 .head-eye {
-  width: 6px;
-  height: 8px;
+  width: 5px;
+  height: 7px;
   background: var(--cream);
   border: 1px solid #000;
   border-radius: 50% 50% 10% 10%;
-  margin-top: 4px;
+  margin-top: 3px;
 }
 .head-eye.left { transform: rotate(-15deg); }
 .head-eye.right { transform: rotate(15deg); }
 
 .spidey-chest-symbol {
   position: absolute;
-  top: 6px;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   background: #000;
   clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
 }
 
 .spidey-arm {
   position: absolute;
-  top: 6px;
-  width: 6px;
-  height: 14px;
+  top: 5px;
+  width: 5px;
+  height: 12px;
   background: var(--blue-txt);
   border: 2px solid #000;
 }
-.spidey-arm.arm-l { left: -7px; transform: rotate(20deg); }
-.spidey-arm.arm-r { right: -7px; transform: rotate(-20deg); }
+.spidey-arm.arm-l { left: -6px; transform: rotate(20deg); }
+.spidey-arm.arm-r { right: -6px; transform: rotate(-20deg); }
 
 .spidey-leg {
   position: absolute;
-  top: -6px;
-  width: 7px;
-  height: 12px;
+  top: -5px;
+  width: 6px;
+  height: 11px;
   background: var(--red);
   border: 2px solid #000;
 }
@@ -463,34 +459,34 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 12px;
+  gap: 10px;
   z-index: 4;
 }
 
 .mission-welcome-text {
-  font-size: 9px;
+  font-size: 8px;
   line-height: 1.8;
   color: var(--blue-txt);
   letter-spacing: 1px;
   text-shadow: 2px 2px 0 #000;
-  max-width: 500px;
+  max-width: 480px;
 }
 
 .current-track-badge {
   background: rgba(9, 23, 36, 0.85);
   border: 2px solid var(--frame-blue);
-  padding: 6px 14px;
+  padding: 5px 12px;
   box-shadow: 0 3px 0 #000;
 }
 
 .track-sec-tag {
-  font-size: 7px;
+  font-size: 6px;
   color: var(--cyan-hud);
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .track-title-text {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--cream);
   letter-spacing: 1px;
 }
@@ -505,8 +501,8 @@ body {
   display: flex;
   gap: 4px;
   align-items: flex-end;
-  height: 20px;
-  padding: 2px 10px;
+  height: 18px;
+  padding: 2px 8px;
 }
 
 .spec-bar {
@@ -530,45 +526,14 @@ body {
 .spec-bar:nth-child(12) { animation-delay: 0.55s; }
 
 @keyframes spec-pulse {
-  0% { height: 4px; opacity: 0.4; }
-  100% { height: 18px; opacity: 1; }
+  0% { height: 3px; opacity: 0.35; }
+  100% { height: 16px; opacity: 1; }
 }
 
 .spectrum-visualizer.paused .spec-bar {
   animation-play-state: paused;
-  height: 4px;
+  height: 3px;
   opacity: 0.3;
-}
-
-/* Screen Option Row Buttons */
-.screen-option-row {
-  display: flex;
-  gap: 8px;
-}
-
-.opt-btn {
-  background: #091724;
-  border: 2px solid var(--frame-blue);
-  color: var(--blue-txt);
-  font-family: inherit;
-  font-size: 8px;
-  padding: 6px 14px;
-  cursor: pointer;
-  box-shadow: 0 2px 0 #000;
-  outline: none;
-  transition: all 0.1s;
-}
-
-.opt-btn:hover {
-  background: var(--frame-deep);
-  color: var(--cream);
-}
-
-.opt-btn.active {
-  background: var(--frame-blue);
-  color: #060d13;
-  border-color: var(--cream);
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.6);
 }
 
 /* ==========================================================================
@@ -727,13 +692,12 @@ body {
   visibility: visible;
 }
 
-/* Radar Widget in Map */
 .map-radar-widget {
   position: absolute;
   bottom: 10px;
   right: 12px;
-  width: 58px;
-  height: 58px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   border: 2px solid var(--frame-blue);
   background: rgba(9, 23, 36, 0.9);
@@ -757,8 +721,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   transform: translate(-50%, -50%);
   border: 1px dashed rgba(58, 168, 207, 0.4);
   border-radius: 50%;
@@ -771,8 +735,8 @@ body {
   border-radius: 50%;
   background: var(--red);
 }
-.radar-ping.p1 { top: 14px; left: 18px; animation: blink 1.2s infinite; }
-.radar-ping.p2 { bottom: 16px; right: 16px; background: var(--green); animation: blink 0.8s infinite; }
+.radar-ping.p1 { top: 12px; left: 16px; animation: blink 1.2s infinite; }
+.radar-ping.p2 { bottom: 14px; right: 14px; background: var(--green); animation: blink 0.8s infinite; }
 
 .radar-tag {
   position: absolute;
@@ -813,201 +777,249 @@ body {
 .leg-dot.locked { background: var(--locked-grey); }
 
 /* ==========================================================================
-   BOTTOM BEZEL CONTROL BAR
+   AUTHENTIC RETRO CONTROL BAR (MATCHING USER SCREENSHOT EXACTLY)
    ========================================================================== */
-.bezel-bottom-control {
+.retro-control-panel {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 4px 6px;
-  position: relative;
-}
-
-/* Crouching Spidey Mascot on Bottom Left Frame */
-.bezel-crouching-spidey {
-  width: 38px;
-  height: 38px;
-  background: var(--red);
-  border: 3px solid #000;
-  border-radius: 50% 50% 40% 40%;
-  position: relative;
-  cursor: pointer;
-  flex-shrink: 0;
-  box-shadow: inset -2px -2px 0 0 var(--red-dark), 0 3px 0 #000;
-  transition: transform 0.1s;
-}
-
-.bezel-crouching-spidey:hover {
-  transform: scale(1.15) translateY(-2px);
-}
-
-.spidey-mini-sprite {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.spidey-mini-sprite::before, .spidey-mini-sprite::after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  width: 8px;
-  height: 10px;
-  background: var(--cream);
-  border: 1px solid #000;
-  border-radius: 50% 50% 10% 10%;
-}
-.spidey-mini-sprite::before { left: 6px; transform: rotate(15deg); }
-.spidey-mini-sprite::after { right: 6px; transform: rotate(-15deg); }
-
-/* Center Wide Dark Marquee Control Pill */
-.marquee-control-pill {
-  flex: 1;
+  gap: 10px;
+  padding: 8px 12px;
+  margin-top: 8px;
   background: #091724;
-  border: 4px solid var(--frame-deep);
-  box-shadow: 
-    inset 0 0 10px rgba(0, 0, 0, 0.9),
-    0 0 0 2px #000,
-    0 3px 0 #000;
-  border-radius: 20px;
-  padding: 6px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  position: relative;
-  min-height: 38px;
-  cursor: pointer;
+  border: 3px solid var(--frame-dark);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
-.marquee-content-wrap {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-  height: 20px;
-  display: flex;
-  align-items: center;
-}
-
-.marquee-ticker {
-  font-size: 8px;
-  color: var(--blue-txt);
-  white-space: nowrap;
-  letter-spacing: 1px;
-  animation: marquee-scroll 18s linear infinite;
-}
-
-@keyframes marquee-scroll {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
-.marquee-seek-layer {
-  position: absolute;
-  inset: 0;
-  background: rgba(9, 23, 36, 0.4);
-  opacity: 0;
-  transition: opacity 0.15s;
-  display: flex;
-  align-items: center;
-}
-
-.marquee-control-pill:hover .marquee-seek-layer,
-.marquee-control-pill:focus-within .marquee-seek-layer {
-  opacity: 1;
-}
-
-.seek-fill-bar {
-  height: 6px;
-  background: var(--frame-blue);
-  width: 0%;
-  border-radius: 3px;
-  box-shadow: 0 0 6px var(--frame-blue);
-}
-
-.seek-thumb-node {
-  width: 12px;
-  height: 12px;
-  background: var(--gold);
-  border: 2px solid #000;
+/* Red Circular Mascot Badge */
+.mascot-circle-badge {
+  width: 36px;
+  height: 36px;
+  background: var(--red);
+  border: 3px solid var(--cream);
   border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  transform: translate(-50%, -50%);
-}
-
-.marquee-time-display {
-  font-size: 7px;
-  color: var(--cyan-hud);
-  white-space: nowrap;
-  letter-spacing: 1px;
-}
-
-/* Speaker Volume Button */
-.bezel-speaker-btn {
-  width: 44px;
-  height: 38px;
-  background: var(--cream);
-  border: 3px solid #000;
-  border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 15px;
+  color: #fff;
+  flex-shrink: 0;
+  box-shadow: 
+    inset -2px -2px 0 0 var(--red-dark),
+    0 2px 5px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  box-shadow: inset -2px -2px 0 0 #a9c6d4, 0 3px 0 #000;
+  transition: transform 0.1s;
+}
+
+.mascot-circle-badge:hover {
+  transform: scale(1.15) rotate(15deg);
+}
+
+/* Play/Pause Button with Golden Dashed Highlight */
+.retro-play-btn {
+  background: #08131d;
+  border: 2px solid var(--frame-blue);
+  outline: 2px dashed var(--gold);
+  outline-offset: 2px;
+  color: var(--blue-txt);
+  font-family: inherit;
+  font-size: 9px;
+  padding: 8px 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: inset -2px -2px 0 #04080d;
+  transition: all 0.1s;
+}
+
+.retro-play-btn:hover {
+  background: #0f2538;
+  color: var(--cream);
+}
+
+.retro-play-btn.active {
+  background: var(--frame-blue);
+  color: #08131d;
+  outline-color: var(--cream);
+}
+
+/* Time Readouts */
+.time-readout {
+  font-size: 9px;
+  color: var(--blue-txt);
+  min-width: 44px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.time-readout.total {
+  color: var(--blue-txt);
+}
+
+/* Seek Bar Track & Golden Thumb */
+.seek-track-wrapper {
+  flex: 1;
+  height: 24px;
+  background: #04080d;
+  border: 2px solid var(--frame-blue);
+  position: relative;
+  cursor: pointer;
+  padding: 2px;
   outline: none;
 }
 
-.bezel-speaker-btn:hover {
-  filter: brightness(1.1);
+.seek-track-bg {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #000;
+}
+
+.seek-fill-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, var(--frame-dark), var(--frame-blue));
+}
+
+.seek-gold-thumb {
+  position: absolute;
+  top: -2px;
+  left: 0%;
+  width: 10px;
+  height: calc(100% + 4px);
+  background: var(--gold);
+  border: 2px solid #5c3c06;
+  box-shadow: 0 0 6px rgba(242, 193, 78, 0.85);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+/* Speaker Volume Button */
+.retro-vol-btn {
+  width: 32px;
+  height: 32px;
+  background: #08131d;
+  border: 2px solid var(--frame-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue-txt);
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+  outline: none;
+  transition: all 0.1s;
+}
+
+.retro-vol-btn:hover {
+  background: #0f2538;
+  color: var(--cream);
 }
 
 /* ==========================================================================
-   LOWER FOOTER ROW (GOLD ARCADE BUTTONS)
+   FOOTER ROW (GOLD BUTTONS & SYNTH BADGE)
    ========================================================================== */
-.bezel-lower-bar {
+.retro-foot-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 4px 0;
+  margin-top: 8px;
+  padding: 0 2px;
 }
 
-.gold-arcade-btn {
-  background: linear-gradient(180deg, var(--gold) 0%, #cf8e1d 100%);
-  border: 3px solid #6b4707;
-  color: #382400;
+.gold-foot-btn {
+  background: linear-gradient(180deg, var(--gold) 0%, #c98a1e 100%);
+  border: 3px solid #7a5310;
+  color: #3a2500;
   font-family: inherit;
   font-size: 9px;
   padding: 10px 18px;
   cursor: pointer;
   letter-spacing: 1px;
-  border-radius: 3px;
+  border-radius: 2px;
   box-shadow: 
-    inset 0 2px 0 0 var(--gold-light),
-    inset 0 -2px 0 0 #8c5b05,
+    inset -2px -2px 0 0 #5c3c06,
+    inset 2px 2px 0 0 #ffe17d,
     0 4px 0 #000;
   outline: none;
   transition: transform 0.05s;
 }
 
-.gold-arcade-btn:hover {
-  filter: brightness(1.15);
+.gold-foot-btn:hover {
+  filter: brightness(1.12);
 }
 
-.gold-arcade-btn:active {
+.gold-foot-btn:active {
   transform: translateY(3px);
   box-shadow: 0 1px 0 #000;
 }
 
-.brand-footer-text {
-  font-size: 7px;
-  color: var(--frame-deep);
+.synth-mode-badge {
+  font-size: 8px;
+  color: var(--blue-txt);
+  background: #091724;
+  border: 2px solid var(--frame-deep);
+  padding: 7px 14px;
   letter-spacing: 1px;
-  text-shadow: 1px 1px 0 rgba(255,255,255,0.2);
+  box-shadow: 0 2px 0 #000;
+}
+
+.synth-mode-badge span {
+  color: var(--gold);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   BEZEL BASE STRIP (HARDWARE VENTS & SPEC)
+   ========================================================================== */
+.bezel-base-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 2px solid var(--frame-dark);
+}
+
+.base-screw {
+  width: 10px;
+  height: 10px;
+  background: #244b60;
+  border: 1px solid #0e2430;
+  position: relative;
+}
+.base-screw::after {
+  content: "+";
+  position: absolute;
+  font-size: 9px;
+  color: #0c1e2e;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+}
+
+.speaker-grille-vents {
+  display: flex;
+  gap: 3px;
+}
+
+.speaker-grille-vents span {
+  width: 3px;
+  height: 12px;
+  background: #0e2430;
+  border-left: 1px solid #2a5369;
+}
+
+.model-spec-text {
+  font-size: 7px;
+  color: var(--frame-blue);
+  letter-spacing: 1px;
+  opacity: 0.9;
 }
 
 /* ==========================================================================
@@ -1174,30 +1186,31 @@ body {
   }
 
   .screen-viewport {
-    min-height: 320px;
+    min-height: 280px;
   }
 
-  .mission-welcome-text {
-    font-size: 7px;
-    line-height: 1.6;
-  }
-
-  .bezel-bottom-control {
+  .retro-control-panel {
     flex-wrap: wrap;
     gap: 6px;
+    padding: 6px 8px;
   }
 
-  .marquee-control-pill {
-    order: 2;
+  .seek-track-wrapper {
+    order: 3;
     width: 100%;
+    flex-basis: 100%;
   }
 
-  .gold-arcade-btn {
+  .gold-foot-btn {
     font-size: 7px;
     padding: 8px 10px;
   }
 
-  .brand-footer-text {
+  .synth-mode-badge {
+    display: none;
+  }
+
+  .model-spec-text {
     display: none;
   }
 }

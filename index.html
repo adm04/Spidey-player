@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SPIDEY ♪ TRACKER — Retro Music Player</title>
+  <title>SPIDEY ♪ PLAYER — Pixel-Art Music Player</title>
   <meta name="description" content="Retro pixel-art comic inspired music tracker and audio player with chiptune synthesis and interactive track map.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,7 +76,6 @@
             <div class="web-thread"></div>
             <div class="hanging-spidey-anchor" id="hangingSpideyAnchor">
               <div class="pixel-hanging-spidey" id="hangingSpidey" title="Click to swing Spidey!">
-                <!-- Upside down pixel spider character -->
                 <div class="spidey-torso">
                   <div class="spidey-head">
                     <span class="head-eye left"></span>
@@ -103,7 +102,7 @@
 
             <!-- Active Track Box -->
             <div class="current-track-badge">
-              <div class="track-sec-tag" id="trackSecTag">SECTOR 01 // 128 BPM</div>
+              <div class="track-sec-tag" id="trackSecTag">SECTOR 01 // 128 BPM CHIPTUNE</div>
               <div class="track-title-text" id="trackTitleDisplay">
                 <span class="track-num-prefix" id="trackNumPrefix">[01]</span>
                 <span id="tName1">ARACHNID ALLEY</span>
@@ -124,16 +123,6 @@
               <div class="spec-bar"></div>
               <div class="spec-bar"></div>
               <div class="spec-bar"></div>
-            </div>
-
-            <!-- Track Option Buttons -->
-            <div class="screen-option-row">
-              <button class="opt-btn active" id="screenPlayBtn">
-                <span id="screenPlayIcon">▶</span> <span id="screenPlayText">SOUND ON</span>
-              </button>
-              <button class="opt-btn" id="screenMapBtn">
-                VIEW MAP
-              </button>
             </div>
           </div>
 
@@ -180,49 +169,68 @@
 
       </div>
 
-      <!-- Bottom Bezel Control Bar -->
-      <div class="bezel-bottom-control">
-        
-        <!-- Bottom Left Crouching Pixel Spidey Mascot on Bezel Edge -->
-        <div class="bezel-crouching-spidey" id="crouchingSpidey" title="Spidey on duty!">
-          <div class="spidey-mini-sprite"></div>
+      <!-- ==========================================
+           AUTHENTIC RETRO CONTROL BAR
+           ========================================== -->
+      <section class="retro-control-panel" aria-label="Playback Controls">
+        <!-- Circular Red Spider Mascot Icon -->
+        <div class="mascot-circle-badge" id="mascotBadge" title="Spider Badge">
+          <span class="mascot-icon">🕷</span>
         </div>
 
-        <!-- Center Wide Dark Ticker Marquee / Seek Scrubber -->
-        <div class="marquee-control-pill" id="marqueePill">
-          <div class="marquee-content-wrap">
-            <div class="marquee-ticker" id="marqueeTicker">
-              SELECT SOUND OPTION • SPIDEY ♪ TRACKER // 8-BIT AUDIO ACTIVE • CLICK ANY PIN ON MAP TO TRACK SIGHTINGS
-            </div>
-            <!-- Progress Bar Overlay inside Marquee -->
-            <div class="marquee-seek-layer" id="seekLayer" role="progressbar" aria-valuenow="0" tabindex="0" title="Click to seek">
-              <div class="seek-fill-bar" id="seekFill"></div>
-              <div class="seek-thumb-node" id="seekThumb"></div>
-            </div>
-          </div>
-          <div class="marquee-time-display" id="timeDisplay">00:00 / 01:45</div>
-        </div>
-
-        <!-- Speaker Mute Button -->
-        <button class="bezel-speaker-btn" id="volBtn" title="Toggle Sound / Mute" aria-label="Volume Mute">
-          <span class="speaker-icon" id="volIcon">🔊</span>
+        <!-- Play / Pause Button with Golden Dashed Outline -->
+        <button class="retro-play-btn" id="playBtn" aria-label="Play or Pause">
+          <span id="playIcon">▶</span> <span id="playText">PLAY</span>
         </button>
 
-      </div>
+        <!-- Elapsed Time -->
+        <div class="time-readout elapsed" id="timeElapsed">00:00</div>
 
-      <!-- Lower Gold Buttons Row -->
-      <div class="bezel-lower-bar">
-        <button class="gold-arcade-btn left" id="prevBtn" aria-label="Previous Track">
+        <!-- Horizontal Blue-Framed Seek Bar -->
+        <div class="seek-track-wrapper" id="seekContainer" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" tabindex="0" title="Click or drag to scrub">
+          <div class="seek-track-bg">
+            <div class="seek-fill-progress" id="seekFill"></div>
+            <div class="seek-gold-thumb" id="seekThumb"></div>
+          </div>
+        </div>
+
+        <!-- Total Time -->
+        <div class="time-readout total" id="timeTotal">01:45</div>
+
+        <!-- Volume Icon Button -->
+        <button class="retro-vol-btn" id="volBtn" title="Toggle Mute" aria-label="Volume">
+          <span id="volIcon">🔊</span>
+        </button>
+      </section>
+
+      <!-- ==========================================
+           FOOTER ROW WITH GOLD BUTTONS & SYNTH PILL
+           ========================================== -->
+      <footer class="retro-foot-bar">
+        <button class="gold-foot-btn" id="prevBtn" aria-label="Previous Track">
           ⏮ PREV TRACK
         </button>
-        
-        <div class="brand-footer-text">
-          SPIDEY PLAYER // RETRO EDITION
+
+        <div class="synth-mode-badge" id="synthBadge" title="Sound Synthesis Engine">
+          SYNTH: <span id="synthStatus">8-BIT</span>
         </div>
 
-        <button class="gold-arcade-btn right" id="nextBtn" aria-label="Next Track">
+        <button class="gold-foot-btn" id="nextBtn" aria-label="Next Track">
           NEXT TRACK ⏭
         </button>
+      </footer>
+
+      <!-- ==========================================
+           BEZEL HARDWARE BASE DETAILS
+           ========================================== -->
+      <div class="bezel-base-strip">
+        <div class="base-screw left"></div>
+        <div class="speaker-grille-vents">
+          <span></span><span></span><span></span><span></span><span></span>
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="model-spec-text">MODEL SP-8BIT // REV 2.4</div>
+        <div class="base-screw right"></div>
       </div>
 
     </div>

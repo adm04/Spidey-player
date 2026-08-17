@@ -82,10 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const sideTabMap = document.getElementById('sideTabMap');
   const sideTabMenu = document.getElementById('sideTabMenu');
   
-  const screenPlayBtn = document.getElementById('screenPlayBtn');
-  const screenPlayIcon = document.getElementById('screenPlayIcon');
-  const screenPlayText = document.getElementById('screenPlayText');
-  const screenMapBtn = document.getElementById('screenMapBtn');
+  const playBtn = document.getElementById('playBtn');
+  const playIcon = document.getElementById('playIcon');
+  const playText = document.getElementById('playText');
   
   const trackNumPrefix = document.getElementById('trackNumPrefix');
   const tName1 = document.getElementById('tName1');
@@ -97,25 +96,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const mapSvg = document.getElementById('mapSvg');
   const unexploredCounter = document.getElementById('unexploredCounter');
   
-  const marqueePill = document.getElementById('marqueePill');
-  const marqueeTicker = document.getElementById('marqueeTicker');
-  const seekLayer = document.getElementById('seekLayer');
+  const seekContainer = document.getElementById('seekContainer');
   const seekFill = document.getElementById('seekFill');
   const seekThumb = document.getElementById('seekThumb');
-  const timeDisplay = document.getElementById('timeDisplay');
+  const timeElapsed = document.getElementById('timeElapsed');
+  const timeTotal = document.getElementById('timeTotal');
   
   const volBtn = document.getElementById('volBtn');
   const volIcon = document.getElementById('volIcon');
   
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
+  const synthStatus = document.getElementById('synthStatus');
+  const synthBadge = document.getElementById('synthBadge');
   
   const eyeBadgeBtn = document.getElementById('eyeBadgeBtn');
   const crtToggleBtn = document.getElementById('crtToggleBtn');
   const crtOverlay = document.getElementById('crtOverlay');
   const hangingSpidey = document.getElementById('hangingSpidey');
   const hangingSpideyAnchor = document.getElementById('hangingSpideyAnchor');
-  const crouchingSpidey = document.getElementById('crouchingSpidey');
+  const mascotBadge = document.getElementById('mascotBadge');
   
   const menuDrawer = document.getElementById('menuDrawer');
   const closeDrawerBtn = document.getElementById('closeDrawerBtn');
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateCounter() {
     const unplayed = TRACKS.filter((t, idx) => idx !== currentIndex && !t.locked).length;
-    unexploredCounter.textContent = `${unplayed} UNEXPLORED SIGHTINGS`;
+    unexploredCounter.textContent = `${unplayed} SIGHTINGS DETECTED`;
   }
 
   // Populate Drawer Tracklist
@@ -205,8 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
     trackNumPrefix.textContent = `[${track.id < 10 ? '0' : ''}${track.id}]`;
     tName1.textContent = track.name;
     trackSecTag.textContent = track.meta;
-    timeDisplay.textContent = `00:00 / ${formatTime(track.duration)}`;
-    marqueeTicker.textContent = `NOW PLAYING: ${track.name} // ${track.meta} • CLICK SCREEN BUTTON TO TOGGLE AUDIO`;
+    timeElapsed.textContent = "00:00";
+    timeTotal.textContent = formatTime(track.duration);
 
     document.querySelectorAll('.map-pin').forEach(pin => {
       const idx = parseInt(pin.dataset.index);
@@ -252,9 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Playback Control
   function startPlayback() {
     isPlaying = true;
-    screenPlayBtn.classList.add('active');
-    screenPlayIcon.textContent = '❚❚';
-    screenPlayText.textContent = 'SOUND OFF';
+    playBtn.classList.add('active');
+    playIcon.textContent = '❚❚';
+    playText.textContent = 'PAUSE';
     spectrumViz.classList.remove('paused');
 
     if (audioEngine === 'synth') {
@@ -271,9 +271,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function pausePlayback() {
     isPlaying = false;
-    screenPlayBtn.classList.remove('active');
-    screenPlayIcon.textContent = '▶';
-    screenPlayText.textContent = 'SOUND ON';
+    playBtn.classList.remove('active');
+    playIcon.textContent = '▶';
+    playText.textContent = 'PLAY';
     spectrumViz.classList.add('paused');
 
     if (audioEngine === 'synth') {
@@ -298,8 +298,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const pct = dur > 0 ? (curr / dur) * 100 : 0;
     seekFill.style.width = `${pct}%`;
     seekThumb.style.left = `${pct}%`;
-    timeDisplay.textContent = `${formatTime(curr)} / ${formatTime(dur)}`;
-    seekLayer.setAttribute('aria-valuenow', Math.round(pct));
+    timeElapsed.textContent = formatTime(curr);
+    timeTotal.textContent = formatTime(dur);
+    seekContainer.setAttribute('aria-valuenow', Math.round(pct));
   }
 
   window.chiptuneSynth.onTimeUpdate = (curr, dur) => {
@@ -320,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Seek Bar Interaction
   function seekTo(e) {
-    const rect = marqueePill.getBoundingClientRect();
+    const rect = seekContainer.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const pct = Math.max(0, Math.min(100, (clickX / rect.width) * 100));
 
@@ -329,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const dur = TRACKS[currentIndex].duration;
     const newTime = (pct / 100) * dur;
-    timeDisplay.textContent = `${formatTime(newTime)} / ${formatTime(dur)}`;
+    timeElapsed.textContent = formatTime(newTime);
 
     if (audioEngine === 'synth') {
       window.chiptuneSynth.seek(pct);
@@ -338,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  marqueePill.addEventListener('mousedown', (e) => {
+  seekContainer.addEventListener('mousedown', (e) => {
     isDraggingSeek = true;
     seekTo(e);
   });
@@ -363,7 +364,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       specBars.forEach((bar, i) => {
         const val = dataArray[i * 2] || (Math.sin(Date.now() / 180 + i) * 8 + 12);
-        const height = Math.max(4, Math.min(18, (val / 255) * 20));
+        const height = Math.max(3, Math.min(16, (val / 255) * 18));
         bar.style.height = `${height}px`;
       });
     }
@@ -407,7 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sideTabPlayer.addEventListener('click', showPlayerView);
   sideTabMap.addEventListener('click', showMapView);
-  screenMapBtn.addEventListener('click', showMapView);
 
   // Prev / Next Navigation
   prevBtn.addEventListener('click', () => {
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selectTrack(currentIndex + 1, isPlaying);
   });
 
-  screenPlayBtn.addEventListener('click', togglePlay);
+  playBtn.addEventListener('click', togglePlay);
 
   // Character Click Animations
   hangingSpidey.addEventListener('click', () => {
@@ -433,10 +433,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 450);
   });
 
-  crouchingSpidey.addEventListener('click', () => {
+  mascotBadge.addEventListener('click', () => {
     window.chiptuneSynth.playBeep(880, 0.08, 'square');
-    crouchingSpidey.style.transform = 'scale(1.3) translateY(-6px)';
-    setTimeout(() => crouchingSpidey.style.transform = '', 300);
+    mascotBadge.style.transform = 'scale(1.25) rotate(360deg)';
+    setTimeout(() => mascotBadge.style.transform = '', 350);
   });
 
   eyeBadgeBtn.addEventListener('click', () => {
@@ -449,6 +449,18 @@ document.addEventListener('DOMContentLoaded', () => {
   crtToggleBtn.addEventListener('click', () => {
     window.chiptuneSynth.playBeep(700, 0.04);
     crtOverlay.classList.toggle('disabled');
+  });
+
+  // Synth badge toggle
+  synthBadge.addEventListener('click', () => {
+    window.chiptuneSynth.playBeep(523, 0.06);
+    if (audioEngine === 'synth') {
+      audioEngine = 'html5';
+      synthStatus.textContent = 'MP3';
+    } else {
+      audioEngine = 'synth';
+      synthStatus.textContent = '8-BIT';
+    }
   });
 
   // Menu Drawer Modal
@@ -470,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
       TRACKS.push({
         id: TRACKS.length + 1,
         name: file.name.replace(/\.[^/.]+$/, "").toUpperCase().substring(0, 16),
-        meta: "CUSTOM USER MISSION AUDIO",
+        meta: "CUSTOM MISSION AUDIO",
         duration: 180,
         src: url,
         x: Math.floor(Math.random() * 60) + 20,
@@ -478,6 +490,7 @@ document.addEventListener('DOMContentLoaded', () => {
         locked: false
       });
       audioEngine = 'html5';
+      synthStatus.textContent = 'CUSTOM';
       renderMap();
       renderDrawerList();
       selectTrack(TRACKS.length - 1, true);
