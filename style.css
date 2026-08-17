@@ -490,87 +490,24 @@ body {
 
 /* Upside Down Hanging Pixel Spidey */
 .pixel-hanging-spidey {
-  width: 36px;
-  height: 44px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: transform 0.15s ease;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.6));
 }
 
 .pixel-hanging-spidey:hover {
-  transform: scale(1.18);
+  transform: scale(1.2);
 }
 
-.spidey-torso {
-  width: 26px;
-  height: 36px;
-  background: var(--red);
-  border: 3px solid #060d13;
-  border-radius: 40% 40% 50% 50%;
-  position: relative;
-  box-shadow: inset -2px -2px 0 0 var(--red-dark);
+.pixel-spidey-svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  shape-rendering: crispEdges;
 }
-
-.spidey-head {
-  width: 20px;
-  height: 18px;
-  background: var(--red);
-  border: 2px solid #060d13;
-  border-radius: 50%;
-  position: absolute;
-  bottom: -9px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  justify-content: center;
-  gap: 4px;
-  box-shadow: inset -1px -1px 0 0 var(--red-dark);
-}
-
-.head-eye {
-  width: 5px;
-  height: 7px;
-  background: var(--cream);
-  border: 1px solid #000;
-  border-radius: 50% 50% 10% 10%;
-  margin-top: 3px;
-}
-.head-eye.left { transform: rotate(-15deg); }
-.head-eye.right { transform: rotate(15deg); }
-
-.spidey-chest-symbol {
-  width: 8px;
-  height: 8px;
-  background: #060d13;
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.spidey-arm {
-  position: absolute;
-  width: 6px;
-  height: 14px;
-  background: var(--red);
-  border: 2px solid #000;
-  top: 6px;
-}
-.spidey-arm.arm-l { left: -5px; transform: rotate(20deg); }
-.spidey-arm.arm-r { right: -5px; transform: rotate(-20deg); }
-
-.spidey-leg {
-  position: absolute;
-  top: -4px;
-  width: 6px;
-  height: 10px;
-  background: var(--red);
-  border: 2px solid #000;
-}
-.spidey-leg.leg-l { left: 0px; transform: rotate(-15deg); }
-.spidey-leg.leg-r { right: 0px; transform: rotate(15deg); }
 
 /* Screen Center HUD */
 .screen-center-hud {
