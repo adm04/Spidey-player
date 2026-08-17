@@ -877,12 +877,10 @@ body {
   transform: scale(1.15) rotate(15deg);
 }
 
-/* Play/Pause Button with Golden Dashed Highlight */
+/* Play/Pause Button */
 .retro-play-btn {
   background: #08131d;
   border: 2px solid var(--frame-blue);
-  outline: 2px dashed var(--gold);
-  outline-offset: 2px;
   color: var(--blue-txt);
   font-family: inherit;
   font-size: 9px;
@@ -895,18 +893,20 @@ body {
   gap: 6px;
   box-shadow: inset -2px -2px 0 #04080d;
   flex-shrink: 0;
+  outline: none;
   transition: all 0.1s;
 }
 
 .retro-play-btn:hover {
   background: #0f2538;
   color: var(--cream);
+  border-color: var(--cyan-hud);
 }
 
 .retro-play-btn.active {
   background: var(--frame-blue);
   color: #08131d;
-  outline-color: var(--cream);
+  border-color: var(--cream);
 }
 
 /* Time Readouts */
