@@ -1464,30 +1464,32 @@ body {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE ADAPTATION FOR 640PX, 480PX, & 360PX)
+   RESPONSIVE DESIGN (GENEROUS MOBILE VIEWPORT & LARGE TOUCH TARGETS)
    ========================================================================== */
 @media (max-width: 640px) {
   body {
-    padding: 6px;
+    padding: 8px 6px;
   }
 
   .monitor-frame {
-    padding: 8px 8px 10px;
-    border-width: 4px;
+    padding: 10px 8px 12px;
+    border-width: 5px;
   }
 
   .bezel-left-tabs {
     position: static;
     flex-direction: row;
     justify-content: center;
-    margin-bottom: 6px;
+    gap: 8px;
+    margin-bottom: 8px;
   }
 
   .side-tab {
-    width: 44px;
-    height: 28px;
+    width: 46px;
+    height: 32px;
     border-radius: 4px;
     border-right: 3px solid #000;
+    font-size: 13px;
   }
 
   .top-title-pill {
@@ -1499,97 +1501,101 @@ body {
   }
 
   .bezel-badge-btn, .top-sq-btn {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
   }
 
   .screen-viewport {
-    min-height: 280px;
+    min-height: 290px;
   }
 
   .retro-control-panel {
     flex-wrap: wrap;
-    gap: 6px;
-    padding: 6px 8px;
+    gap: 8px;
+    padding: 8px 10px;
   }
 
   .seek-track-wrapper {
-    order: 3;
+    order: 4;
     width: 100%;
     flex-basis: 100%;
+    height: 22px;
+    margin-top: 4px;
   }
 
   .gold-foot-btn {
+    font-size: 8px;
+    padding: 10px 12px;
+  }
+
+  .synth-mode-badge {
     font-size: 7px;
     padding: 8px 10px;
   }
 
-  .synth-mode-badge {
-    display: none;
-  }
-
   .model-spec-text {
-    display: none;
+    font-size: 6px;
   }
 }
 
-/* Specific 360px - 480px Mobile Screen Polish (Compact Height to fit on one screen) */
+/* Specific 360px - 480px Mobile Screen (Generous Handheld Console Height & Large Touch Targets) */
 @media (max-width: 480px) {
   body {
-    padding: 2px 2px;
+    padding: 6px 4px 16px;
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
   }
 
   .monitor-wrapper {
     width: 100%;
     max-width: 100vw;
+    margin: 4px auto 16px;
   }
 
   .monitor-frame {
-    padding: 4px 4px 6px;
-    border-width: 3px;
-    box-shadow: 0 0 0 2px #000, 0 4px 0 rgba(0,0,0,0.7);
+    padding: 8px 6px 12px;
+    border-width: 4px;
+    box-shadow: 0 0 0 2px #000, 0 8px 0 rgba(0,0,0,0.7);
   }
 
   .bezel-header {
-    padding: 1px 2px 3px;
-    gap: 3px;
+    padding: 2px 2px 8px;
+    gap: 6px;
   }
 
   .bezel-badge-btn {
-    width: 24px;
-    height: 24px;
+    width: 36px;
+    height: 36px;
     border-width: 2px;
   }
 
   .bezel-eye {
-    width: 5px;
-    height: 8px;
+    width: 8px;
+    height: 11px;
   }
 
   .top-title-pill {
-    padding: 3px 6px;
-    gap: 3px;
+    padding: 6px 10px;
+    gap: 5px;
     border-width: 2px;
   }
 
   .title-text {
-    font-size: 7px;
+    font-size: 8.5px;
     letter-spacing: 0.5px;
   }
 
   .mini-spidey-mask {
-    width: 12px;
-    height: 12px;
+    width: 16px;
+    height: 16px;
   }
 
   .top-sq-btn {
-    width: 24px;
-    height: 24px;
-    font-size: 11px;
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
     border-width: 2px;
   }
 
@@ -1597,181 +1603,191 @@ body {
     position: static;
     flex-direction: row;
     justify-content: center;
-    gap: 4px;
-    margin: 2px 0 3px;
+    gap: 8px;
+    margin: 4px 0 8px;
   }
 
   .side-tab {
-    width: 32px;
-    height: 20px;
-    font-size: 9px;
-    border-radius: 2px;
+    width: 46px;
+    height: 32px;
+    font-size: 13px;
+    border-radius: 3px;
     border: 2px solid #000;
   }
 
   .screen-viewport {
-    min-height: 175px;
-    height: 175px;
-    padding: 4px 3px;
-    border-width: 2px;
+    min-height: 280px;
+    height: auto;
+    padding: 8px 6px;
+    border-width: 3px;
   }
 
   #viewPlayer {
-    min-height: 175px;
-    padding: 0 4px 4px;
+    min-height: 280px;
+    padding: 0 6px 12px;
   }
 
   .hanging-web-rig .web-thread {
-    height: 18px;
+    height: 38px;
   }
 
   .pixel-hanging-spidey {
-    transform: scale(0.68);
+    transform: scale(0.92);
     transform-origin: top center;
   }
 
   .screen-center-hud {
-    margin-top: 48px;
-    gap: 4px;
-    margin-bottom: 2px;
+    margin-top: 85px;
+    gap: 8px;
+    margin-bottom: 4px;
   }
 
   .mission-welcome-text {
-    font-size: 5px;
-    line-height: 1.35;
+    font-size: 6.5px;
+    line-height: 1.6;
     letter-spacing: 0.5px;
-    max-width: 250px;
+    max-width: 310px;
   }
 
   .current-track-badge {
-    padding: 2px 5px;
+    padding: 5px 10px;
   }
 
   .track-sec-tag {
-    font-size: 4px;
-    margin-bottom: 1px;
+    font-size: 5.5px;
+    margin-bottom: 3px;
   }
 
   .track-title-text {
-    font-size: 7px;
+    font-size: 8.5px;
     word-break: break-word;
   }
 
   .spectrum-visualizer {
-    height: 10px;
-    gap: 1.5px;
-    padding: 0;
+    height: 14px;
+    gap: 2.5px;
+    padding: 2px 4px;
   }
 
   .spec-bar {
-    width: 2.5px;
+    width: 3.5px;
   }
 
+  /* Control Panel with Touch-Friendly Hitboxes */
   .retro-control-panel {
-    padding: 3px 3px;
-    gap: 3px;
-    margin-top: 3px;
+    padding: 8px 6px;
+    gap: 6px;
+    margin-top: 6px;
     flex-wrap: wrap;
   }
 
   .mascot-circle-badge {
-    width: 22px;
-    height: 22px;
-    font-size: 9px;
-    border-width: 2px;
+    width: 32px;
+    height: 32px;
+    font-size: 13px;
+    border-width: 2.5px;
   }
 
   .retro-play-btn {
-    font-size: 6px;
-    padding: 4px 5px;
-    gap: 3px;
+    font-size: 8px;
+    padding: 8px 12px;
+    gap: 5px;
+    min-height: 34px;
   }
 
   .time-readout {
-    font-size: 6px;
-    min-width: 26px;
+    font-size: 7.5px;
+    min-width: 34px;
   }
 
   .seek-track-wrapper {
     order: 4;
     width: 100%;
     flex-basis: 100%;
-    height: 12px;
-    margin-top: 1px;
-    padding: 1px;
+    height: 22px;
+    margin-top: 4px;
+    padding: 2px;
   }
 
   .seek-gold-thumb {
-    width: 6px;
-  }
-
-  .retro-vol-btn {
-    width: 22px;
-    height: 20px;
-    font-size: 9px;
-  }
-
-  .vol-popup-panel {
-    bottom: 26px;
-    right: -2px;
-    padding: 3px 2px;
-    gap: 3px;
-    width: 24px;
-  }
-
-  .vol-step-btn {
-    width: 16px;
-    height: 14px;
-    font-size: 8px;
-  }
-
-  .vol-slider-track-wrap {
-    height: 42px;
     width: 10px;
   }
 
+  .retro-vol-btn {
+    width: 32px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .vol-popup-panel {
+    bottom: 36px;
+    right: -2px;
+    padding: 6px 4px;
+    gap: 5px;
+    width: 32px;
+  }
+
+  .vol-step-btn {
+    width: 22px;
+    height: 20px;
+    font-size: 10px;
+  }
+
+  .vol-slider-track-wrap {
+    height: 52px;
+    width: 12px;
+  }
+
   .pixel-vol-range.vertical {
-    height: 38px;
-    width: 4px;
+    height: 48px;
+    width: 6px;
   }
 
   .vol-pct-text {
-    font-size: 5px;
+    font-size: 6px;
   }
 
+  /* Footer Buttons with Chunky Touch Areas */
   .retro-foot-bar {
-    margin-top: 3px;
-    gap: 3px;
+    margin-top: 6px;
+    gap: 5px;
   }
 
   .gold-foot-btn {
-    font-size: 6px;
-    padding: 5px 3px;
+    font-size: 7.5px;
+    padding: 10px 8px;
     flex: 1;
     text-align: center;
-    border-width: 2px;
+    border-width: 2.5px;
     letter-spacing: 0.5px;
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .synth-mode-badge {
-    font-size: 5.5px;
-    padding: 4px 5px;
+    font-size: 6.5px;
+    padding: 8px 8px;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
   }
 
   .bezel-base-strip {
-    margin-top: 2px;
-    padding-top: 2px;
+    margin-top: 6px;
+    padding-top: 6px;
   }
 
   .model-spec-text {
-    font-size: 4.5px;
-    padding: 1px 3px;
+    font-size: 6px;
+    padding: 3px 6px;
   }
 
   .speaker-grille-vents span {
-    width: 2px;
-    height: 6px;
+    width: 3px;
+    height: 8px;
   }
 }
 

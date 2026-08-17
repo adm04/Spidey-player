@@ -445,23 +445,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Seek Scrubber
-  seekContainer.addEventListener('click', (e) => {
+  // Seek Scrubber (Click & Touch Drag Scrubbing)
+  function handleSeekAtPosition(clientX) {
     const rect = seekContainer.getBoundingClientRect();
-    const clickX = e.clientX - rect.left;
+    const clickX = clientX - rect.left;
     const pct = Math.max(0, Math.min(100, (clickX / rect.width) * 100));
 
     let dur = BRAND_NEW_DAY_TRACKS[currentTrackIndex].duration;
     if (currentMode === 'youtube' && ytReady && ytPlayer && ytPlayer.getDuration) {
       dur = ytPlayer.getDuration() || dur;
       const targetSec = (pct / 100) * dur;
-      ytPlayer.seekTo(targetSec, true);
-    } else {
+      try { ytPlayer.seekTo(targetSec, true); } catch(e) {}
+    } else if (window.chiptuneSynth) {
       window.chiptuneSynth.seek(pct);
+    } else if (realAudio && realAudio.duration) {
+      realAudio.currentTime = (pct / 100) * realAudio.duration;
     }
 
     seekFill.style.width = `${pct}%`;
     seekThumb.style.left = `${pct}%`;
+  }
+
+  seekContainer.addEventListener('click', (e) => {
+    handleSeekAtPosition(e.clientX);
+  });
+
+  let isTouchSeeking = false;
+  seekContainer.addEventListener('touchstart', (e) => {
+    isTouchSeeking = true;
+    if (e.touches && e.touches[0]) handleSeekAtPosition(e.touches[0].clientX);
+  }, { passive: true });
+
+  seekContainer.addEventListener('touchmove', (e) => {
+    if (isTouchSeeking && e.touches && e.touches[0]) {
+      handleSeekAtPosition(e.touches[0].clientX);
+    }
+  }, { passive: true });
+
+  seekContainer.addEventListener('touchend', () => {
+    isTouchSeeking = false;
   });
 
   // Dynamic Spectrum Visualizer Matching Audio Rhythm
