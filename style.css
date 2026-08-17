@@ -1450,10 +1450,14 @@ body {
   }
 }
 
-/* Specific 360px - 480px Mobile Screen Polish */
+/* Specific 360px - 480px Mobile Screen Polish (Compact Height to fit on one screen) */
 @media (max-width: 480px) {
   body {
-    padding: 4px 2px;
+    padding: 2px 2px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .monitor-wrapper {
@@ -1462,47 +1466,47 @@ body {
   }
 
   .monitor-frame {
-    padding: 6px 4px 8px;
-    border-width: 4px;
-    box-shadow: 0 0 0 2px #000, 0 6px 0 rgba(0,0,0,0.7);
+    padding: 4px 4px 6px;
+    border-width: 3px;
+    box-shadow: 0 0 0 2px #000, 0 4px 0 rgba(0,0,0,0.7);
   }
 
   .bezel-header {
-    padding: 2px 2px 6px;
-    gap: 4px;
+    padding: 1px 2px 3px;
+    gap: 3px;
   }
 
   .bezel-badge-btn {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     border-width: 2px;
   }
 
   .bezel-eye {
-    width: 7px;
-    height: 10px;
+    width: 5px;
+    height: 8px;
   }
 
   .top-title-pill {
-    padding: 5px 8px;
-    gap: 4px;
+    padding: 3px 6px;
+    gap: 3px;
     border-width: 2px;
   }
 
   .title-text {
-    font-size: 8px;
+    font-size: 7px;
     letter-spacing: 0.5px;
   }
 
   .mini-spidey-mask {
-    width: 15px;
-    height: 15px;
+    width: 12px;
+    height: 12px;
   }
 
   .top-sq-btn {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
     border-width: 2px;
   }
 
@@ -1510,132 +1514,156 @@ body {
     position: static;
     flex-direction: row;
     justify-content: center;
-    gap: 6px;
-    margin: 4px 0 6px;
+    gap: 4px;
+    margin: 2px 0 3px;
   }
 
   .side-tab {
-    width: 38px;
-    height: 26px;
-    font-size: 11px;
-    border-radius: 3px;
+    width: 32px;
+    height: 20px;
+    font-size: 9px;
+    border-radius: 2px;
     border: 2px solid #000;
   }
 
   .screen-viewport {
-    min-height: 240px;
-    padding: 6px 4px;
-    border-width: 3px;
+    min-height: 175px;
+    height: 175px;
+    padding: 4px 3px;
+    border-width: 2px;
+  }
+
+  #viewPlayer {
+    min-height: 175px;
+    padding: 0 4px 4px;
   }
 
   .hanging-web-rig .web-thread {
-    height: 36px;
+    height: 18px;
   }
 
   .pixel-hanging-spidey {
-    transform: scale(0.85);
+    transform: scale(0.68);
+    transform-origin: top center;
   }
 
   .screen-center-hud {
-    gap: 6px;
+    margin-top: 48px;
+    gap: 4px;
+    margin-bottom: 2px;
   }
 
   .mission-welcome-text {
-    font-size: 6px;
-    line-height: 1.5;
+    font-size: 5px;
+    line-height: 1.35;
     letter-spacing: 0.5px;
+    max-width: 250px;
   }
 
   .current-track-badge {
-    padding: 3px 6px;
+    padding: 2px 5px;
   }
 
   .track-sec-tag {
-    font-size: 5px;
+    font-size: 4px;
+    margin-bottom: 1px;
   }
 
   .track-title-text {
-    font-size: 8px;
+    font-size: 7px;
     word-break: break-word;
   }
 
   .spectrum-visualizer {
-    height: 14px;
-    gap: 2px;
-    padding: 1px 4px;
+    height: 10px;
+    gap: 1.5px;
+    padding: 0;
   }
 
   .spec-bar {
-    width: 3px;
+    width: 2.5px;
   }
 
   .retro-control-panel {
-    padding: 6px 4px;
-    gap: 4px;
+    padding: 3px 3px;
+    gap: 3px;
+    margin-top: 3px;
     flex-wrap: wrap;
   }
 
   .mascot-circle-badge {
-    width: 26px;
-    height: 26px;
-    font-size: 11px;
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
     border-width: 2px;
   }
 
   .retro-play-btn {
-    font-size: 7px;
-    padding: 6px 6px;
+    font-size: 6px;
+    padding: 4px 5px;
+    gap: 3px;
   }
 
   .time-readout {
-    font-size: 7px;
-    min-width: 30px;
+    font-size: 6px;
+    min-width: 26px;
   }
 
   .seek-track-wrapper {
     order: 4;
     width: 100%;
     flex-basis: 100%;
-    height: 18px;
-    margin-top: 2px;
+    height: 12px;
+    margin-top: 1px;
+    padding: 1px;
+  }
+
+  .seek-gold-thumb {
+    width: 6px;
   }
 
   .retro-vol-btn {
-    width: 28px;
-    height: 28px;
-    font-size: 11px;
-  }
-
-  .vol-popup-panel {
-    bottom: 34px;
-    right: 0;
-    padding: 4px 6px;
-    gap: 4px;
-  }
-
-  .vol-step-btn {
-    width: 18px;
-    height: 18px;
+    width: 22px;
+    height: 20px;
     font-size: 9px;
   }
 
-  .pixel-vol-range {
-    width: 48px;
+  .vol-popup-panel {
+    bottom: 26px;
+    right: -2px;
+    padding: 3px 2px;
+    gap: 3px;
+    width: 24px;
+  }
+
+  .vol-step-btn {
+    width: 16px;
+    height: 14px;
+    font-size: 8px;
+  }
+
+  .vol-slider-track-wrap {
+    height: 42px;
+    width: 10px;
+  }
+
+  .pixel-vol-range.vertical {
+    height: 38px;
+    width: 4px;
   }
 
   .vol-pct-text {
-    font-size: 6px;
-    min-width: 18px;
+    font-size: 5px;
   }
 
   .retro-foot-bar {
-    margin-top: 6px;
-    gap: 4px;
+    margin-top: 3px;
+    gap: 3px;
   }
 
   .gold-foot-btn {
-    font-size: 7px;
-    padding: 7px 4px;
+    font-size: 6px;
+    padding: 5px 3px;
     flex: 1;
     text-align: center;
     border-width: 2px;
@@ -1643,22 +1671,24 @@ body {
   }
 
   .synth-mode-badge {
-    display: none;
+    font-size: 5.5px;
+    padding: 4px 5px;
+    display: flex;
   }
 
   .bezel-base-strip {
-    margin-top: 4px;
-    padding-top: 4px;
+    margin-top: 2px;
+    padding-top: 2px;
   }
 
   .model-spec-text {
-    font-size: 5px;
-    padding: 2px 4px;
+    font-size: 4.5px;
+    padding: 1px 3px;
   }
 
   .speaker-grille-vents span {
     width: 2px;
-    height: 8px;
+    height: 6px;
   }
 }
 
