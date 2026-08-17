@@ -966,7 +966,7 @@ body {
   pointer-events: none;
 }
 
-/* Volume Control Wrapper & Popup Panel */
+/* Compact Volume Control Wrapper & Vertical Popup Panel */
 .vol-control-wrap {
   position: relative;
   display: flex;
@@ -975,19 +975,19 @@ body {
 }
 
 .retro-vol-btn {
-  width: 34px;
-  height: 32px;
+  width: 28px;
+  height: 26px;
   background: #08131d;
   border: 2px solid var(--frame-blue);
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--blue-txt);
-  font-size: 13px;
+  font-size: 11px;
   cursor: pointer;
   outline: none;
   transition: all 0.1s;
-  box-shadow: inset -2px -2px 0 #04080d;
+  box-shadow: inset -1px -1px 0 #04080d;
 }
 
 .retro-vol-btn:hover {
@@ -996,20 +996,22 @@ body {
   border-color: var(--gold);
 }
 
+/* Compact Vertical Popup Panel */
 .vol-popup-panel {
   display: none;
   position: absolute;
-  bottom: 40px;
-  right: 0;
+  bottom: 34px;
+  right: -2px;
   background: #091724;
-  border: 3px solid var(--frame-blue);
-  padding: 8px 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.9), inset 0 0 8px rgba(0,0,0,0.8);
-  z-index: 50;
+  border: 2px solid var(--frame-blue);
+  padding: 6px 4px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.95), inset 0 0 6px #000;
+  z-index: 60;
   border-radius: 2px;
+  flex-direction: column;
   align-items: center;
-  gap: 6px;
-  white-space: nowrap;
+  gap: 5px;
+  width: 32px;
 }
 
 .vol-control-wrap:hover .vol-popup-panel,
@@ -1019,19 +1021,19 @@ body {
 }
 
 .vol-step-btn {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 18px;
   background: var(--frame-dark);
   border: 2px solid var(--frame-blue);
   color: var(--cream);
   font-family: inherit;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: bold;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 0 #000;
+  box-shadow: 0 1px 0 #000;
   outline: none;
 }
 
@@ -1040,39 +1042,56 @@ body {
   color: #000;
 }
 
-.pixel-vol-range {
+.vol-step-btn:active {
+  transform: translateY(1px);
+}
+
+/* Vertical Range Slider */
+.vol-slider-track-wrap {
+  height: 56px;
+  width: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pixel-vol-range.vertical {
   appearance: none;
   -webkit-appearance: none;
-  width: 70px;
-  height: 6px;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  width: 6px;
+  height: 52px;
   background: #04080d;
   border: 1px solid var(--frame-blue);
   outline: none;
-}
-
-.pixel-vol-range::-webkit-slider-thumb {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 12px;
-  height: 14px;
-  background: var(--gold);
-  border: 2px solid #000;
   cursor: pointer;
 }
 
-.pixel-vol-range::-moz-range-thumb {
+.pixel-vol-range.vertical::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
   width: 12px;
-  height: 14px;
+  height: 8px;
   background: var(--gold);
-  border: 2px solid #000;
+  border: 1px solid #000;
+  border-radius: 1px;
+  cursor: pointer;
+}
+
+.pixel-vol-range.vertical::-moz-range-thumb {
+  width: 12px;
+  height: 8px;
+  background: var(--gold);
+  border: 1px solid #000;
+  border-radius: 1px;
   cursor: pointer;
 }
 
 .vol-pct-text {
-  font-size: 7px;
+  font-size: 6px;
   color: var(--gold);
-  min-width: 28px;
-  text-align: right;
+  text-align: center;
   letter-spacing: 0.5px;
 }
 

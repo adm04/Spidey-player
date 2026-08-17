@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css?v=5.0">
+  <link rel="stylesheet" href="style.css?v=6.0">
 </head>
 <body>
 
@@ -198,15 +198,17 @@
         <!-- Total Time -->
         <div class="time-readout total" id="timeTotal">01:45</div>
 
-        <!-- Volume Up/Down & Slider Control -->
+        <!-- Volume Up/Down & Vertical Slider Control -->
         <div class="vol-control-wrap">
-          <button class="retro-vol-btn" id="volBtn" title="Volume / Mute (Hover for Slider)" aria-label="Volume">
+          <button class="retro-vol-btn" id="volBtn" title="Volume / Mute (Hover for Vertical Slider)" aria-label="Volume">
             <span id="volIcon">🔊</span>
           </button>
           <div class="vol-popup-panel" id="volPopup">
-            <button class="vol-step-btn" id="volDownBtn" title="Volume Down">-</button>
-            <input type="range" id="volSlider" class="pixel-vol-range" min="0" max="100" value="80" aria-label="Volume Slider">
             <button class="vol-step-btn" id="volUpBtn" title="Volume Up">+</button>
+            <div class="vol-slider-track-wrap">
+              <input type="range" id="volSlider" class="pixel-vol-range vertical" min="0" max="100" value="80" aria-label="Volume Slider" orient="vertical">
+            </div>
+            <button class="vol-step-btn" id="volDownBtn" title="Volume Down">-</button>
             <span class="vol-pct-text" id="volPctText">80%</span>
           </div>
         </div>
