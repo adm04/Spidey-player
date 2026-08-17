@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="stylesheet" href="style.css?v=11.0">
+  <link rel="stylesheet" href="style.css?v=12.0">
 </head>
 <body>
 
@@ -82,40 +82,65 @@
             <div class="web-origin-point"></div>
             <div class="web-thread"></div>
             <div class="pixel-hanging-spidey" id="hangingSpidey" title="Click to swing Spidey!">
-              <svg class="pixel-spidey-svg" viewBox="0 0 32 42" width="34" height="44" shape-rendering="crispEdges">
-                <!-- Top Web Connector / Feet -->
-                <rect x="15" y="0" width="2" height="4" fill="#eaf6fb"/>
-                
-                <!-- Torso / Limbs (Upside Down) -->
-                <!-- Red Body Base -->
-                <rect x="10" y="4" width="12" height="15" fill="#e13a3a"/>
-                <rect x="8" y="7" width="16" height="10" fill="#e13a3a"/>
-                
-                <!-- Blue Side Panels & Folded Arms/Legs -->
-                <rect x="6" y="9" width="4" height="8" fill="#3aa8cf"/>
-                <rect x="22" y="9" width="4" height="8" fill="#3aa8cf"/>
-                <rect x="8" y="6" width="3" height="3" fill="#1b6d8f"/>
-                <rect x="21" y="6" width="3" height="3" fill="#1b6d8f"/>
-                
-                <!-- Body Outlines -->
-                <path d="M 10 4 H 22 V 7 H 26 V 17 H 22 V 19 H 10 V 17 H 6 V 7 H 10 Z" fill="none" stroke="#060d13" stroke-width="1.5"/>
-                
-                <!-- Chest Black Spider Symbol -->
-                <rect x="14" y="9" width="4" height="4" fill="#060d13"/>
-                <rect x="11" y="10" width="10" height="2" fill="#060d13"/>
-                <rect x="12" y="14" width="8" height="2" fill="#060d13"/>
-                <rect x="15" y="6" width="2" height="8" fill="#060d13"/>
+              <svg class="pixel-spidey-svg" viewBox="0 0 18 24" width="36" height="48" shape-rendering="crispEdges">
+                <!-- White Web Thread Entry -->
+                <rect x="8" y="0" width="2" height="3" fill="#ffffff"/>
 
-                <!-- Round Red Head (Bottom) -->
-                <rect x="9" y="19" width="14" height="18" rx="7" fill="#e13a3a" stroke="#060d13" stroke-width="1.5"/>
-                <rect x="7" y="22" width="18" height="12" rx="4" fill="#e13a3a"/>
-                <path d="M 9 20 H 23 V 35 H 9 Z" fill="none" stroke="#060d13" stroke-width="1.5"/>
+                <!-- Torso & Folded Limbs (Upside Down) -->
+                <!-- Outlines -->
+                <rect x="7" y="2" width="4" height="1" fill="#000000"/>
+                <rect x="5" y="3" width="2" height="1" fill="#000000"/>
+                <rect x="11" y="3" width="2" height="1" fill="#000000"/>
+                <rect x="3" y="4" width="2" height="1" fill="#000000"/>
+                <rect x="13" y="4" width="2" height="1" fill="#000000"/>
+                <rect x="2" y="5" width="1" height="3" fill="#000000"/>
+                <rect x="15" y="5" width="1" height="3" fill="#000000"/>
+                <rect x="3" y="8" width="2" height="1" fill="#000000"/>
+                <rect x="13" y="8" width="2" height="1" fill="#000000"/>
 
-                <!-- Big White Pixel Eyes with Bold Black Outline -->
-                <!-- Left Eye -->
-                <rect x="8" y="24" width="7" height="8" fill="#eaf6fb" stroke="#060d13" stroke-width="1.5" rx="1"/>
-                <!-- Right Eye -->
-                <rect x="17" y="24" width="7" height="8" fill="#eaf6fb" stroke="#060d13" stroke-width="1.5" rx="1"/>
+                <!-- Blue Suit Limbs / Side Accents -->
+                <rect x="3" y="5" width="3" height="3" fill="#3aa8cf"/>
+                <rect x="12" y="5" width="3" height="3" fill="#3aa8cf"/>
+
+                <!-- Red Torso Core -->
+                <rect x="7" y="3" width="4" height="5" fill="#e13a3a"/>
+                <rect x="6" y="4" width="6" height="4" fill="#e13a3a"/>
+
+                <!-- Chest Spider Emblem -->
+                <rect x="7" y="5" width="4" height="1" fill="#060d13"/>
+                <rect x="8" y="6" width="2" height="2" fill="#060d13"/>
+                <rect x="6" y="7" width="6" height="1" fill="#060d13"/>
+
+                <!-- Neck Connection -->
+                <rect x="6" y="8" width="6" height="1" fill="#000000"/>
+
+                <!-- Round Red Mask / Head (Bottom) -->
+                <!-- Head Black Contour -->
+                <rect x="5" y="9" width="8" height="1" fill="#000000"/>
+                <rect x="4" y="10" width="1" height="1" fill="#000000"/>
+                <rect x="13" y="10" width="1" height="1" fill="#000000"/>
+                <rect x="3" y="11" width="1" height="8" fill="#000000"/>
+                <rect x="14" y="11" width="1" height="8" fill="#000000"/>
+                <rect x="4" y="19" width="2" height="1" fill="#000000"/>
+                <rect x="12" y="19" width="2" height="1" fill="#000000"/>
+                <rect x="6" y="20" width="6" height="1" fill="#000000"/>
+
+                <!-- Red Head Fill -->
+                <rect x="5" y="10" width="8" height="9" fill="#e13a3a"/>
+                <rect x="4" y="11" width="10" height="7" fill="#e13a3a"/>
+
+                <!-- Big Expressive White Eyes -->
+                <!-- Left Eye Outer Black Border -->
+                <rect x="4" y="12" width="5" height="6" fill="#000000"/>
+                <!-- Left Eye White Pupil -->
+                <rect x="5" y="13" width="3" height="4" fill="#ffffff"/>
+                <rect x="6" y="12" width="2" height="1" fill="#ffffff"/>
+
+                <!-- Right Eye Outer Black Border -->
+                <rect x="9" y="12" width="5" height="6" fill="#000000"/>
+                <!-- Right Eye White Pupil -->
+                <rect x="10" y="13" width="3" height="4" fill="#ffffff"/>
+                <rect x="10" y="12" width="2" height="1" fill="#ffffff"/>
               </svg>
             </div>
           </div>
