@@ -37,11 +37,6 @@
 
 body {
   background: #02060a;
-  background-image: 
-    radial-gradient(#152c40 10%, transparent 11%),
-    radial-gradient(#152c40 10%, transparent 11%);
-  background-size: 28px 28px;
-  background-position: 0 0, 14px 14px;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -51,6 +46,36 @@ body {
   padding: 16px 8px;
   user-select: none;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Animated Cyber Web Grid */
+.bg-animated-grid {
+  position: fixed;
+  inset: -150px;
+  background-image: 
+    linear-gradient(rgba(58, 168, 207, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 168, 207, 0.09) 1px, transparent 1px);
+  background-size: 40px 40px;
+  transform: perspective(600px) rotateX(48deg);
+  animation: grid-drift 22s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes grid-drift {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 800px; }
+}
+
+/* Animated Canvas Background */
+.bg-animated-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Phosphor Scanline Overlay */
