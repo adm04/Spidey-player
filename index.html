@@ -70,6 +70,11 @@
              ========================================== -->
         <section class="screen-view active" id="viewPlayer" role="tabpanel">
           
+          <!-- YouTube Video / CRT Screen Box -->
+          <div class="yt-video-wrapper" id="ytVideoWrapper">
+            <div id="ytPlayerContainer"></div>
+          </div>
+
           <!-- Hanging Web Line & Hanging Upside-Down Spidey -->
           <div class="hanging-web-rig" id="hangingWebRig">
             <div class="web-origin-point"></div>
@@ -123,6 +128,13 @@
               <div class="spec-bar"></div>
               <div class="spec-bar"></div>
               <div class="spec-bar"></div>
+            </div>
+
+            <!-- Audio Stream Mode Toggle Button -->
+            <div class="stream-control-row">
+              <button class="stream-mode-btn" id="streamModeBtn">
+                MODE: <span id="streamModeText">YOUTUBE STREAM</span>
+              </button>
             </div>
           </div>
 

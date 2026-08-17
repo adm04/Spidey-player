@@ -65,24 +65,30 @@ function loadYouTubeAPI() {
 }
 
 window.onYouTubeIframeAPIReady = function() {
-  ytPlayer = new YT.Player('ytPlayerContainer', {
-    height: '0',
-    width: '0',
-    videoId: BRAND_NEW_DAY_TRACKS[0].videoId,
-    playerVars: {
-      'autoplay': 0,
-      'controls': 0,
-      'disablekb': 1,
-      'fs': 0,
-      'playsinline': 1,
-      'rel': 0
-    },
-    events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange,
-      'onError': onPlayerError
-    }
-  });
+  try {
+    ytPlayer = new YT.Player('ytPlayerContainer', {
+      height: '155',
+      width: '280',
+      videoId: BRAND_NEW_DAY_TRACKS[0].videoId,
+      playerVars: {
+        'autoplay': 0,
+        'controls': 1,
+        'disablekb': 0,
+        'fs': 0,
+        'playsinline': 1,
+        'rel': 0,
+        'enablejsapi': 1,
+        'origin': window.location.origin
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange,
+        'onError': onPlayerError
+      }
+    });
+  } catch(e) {
+    console.warn("YouTube Player Init fallback:", e);
+  }
 };
 
 function onPlayerReady(event) {
@@ -101,9 +107,12 @@ function onPlayerStateChange(event) {
 }
 
 function onPlayerError(e) {
-  console.warn("YouTube playback fallback to chiptune synth:", e);
+  console.warn("YouTube video restricted/error, playing chiptune fallback:", e);
   currentMode = 'synth';
-  document.getElementById('synthStatus').textContent = '8-BIT';
+  const synthStatus = document.getElementById('synthStatus');
+  const streamModeText = document.getElementById('streamModeText');
+  if (synthStatus) synthStatus.textContent = '8-BIT';
+  if (streamModeText) streamModeText.textContent = '8-BIT SYNTH';
   window.chiptuneSynth.setTrack(currentTrackIndex % 6);
   if (isPlaying) window.chiptuneSynth.play();
 }
@@ -409,21 +418,33 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Switch Sound Engine (YouTube Live Audio vs 8-Bit Chiptune)
-  synthBadge.addEventListener('click', () => {
+  const streamModeBtn = document.getElementById('streamModeBtn');
+  const streamModeText = document.getElementById('streamModeText');
+  const ytVideoWrapper = document.getElementById('ytVideoWrapper');
+  const hangingWebRig = document.getElementById('hangingWebRig');
+
+  function toggleAudioEngineMode() {
     window.chiptuneSynth.playBeep(523, 0.06);
     if (currentMode === 'youtube') {
       currentMode = 'synth';
       synthStatus.textContent = '8-BIT';
+      if (streamModeText) streamModeText.textContent = '8-BIT SYNTH';
+      if (ytVideoWrapper) ytVideoWrapper.classList.remove('active');
+      if (hangingWebRig) hangingWebRig.style.display = 'flex';
       if (ytPlayer && ytPlayer.pauseVideo) ytPlayer.pauseVideo();
       window.chiptuneSynth.setTrack(currentTrackIndex % 6);
       if (isPlaying) window.chiptuneSynth.play();
     } else {
       currentMode = 'youtube';
       synthStatus.textContent = 'STREAM';
+      if (streamModeText) streamModeText.textContent = 'YOUTUBE STREAM';
       window.chiptuneSynth.pause();
       if (ytPlayer && ytPlayer.playVideo && isPlaying) ytPlayer.playVideo();
     }
-  });
+  }
+
+  synthBadge.addEventListener('click', toggleAudioEngineMode);
+  if (streamModeBtn) streamModeBtn.addEventListener('click', toggleAudioEngineMode);
 
   // Prev / Next
   prevBtn.addEventListener('click', () => {

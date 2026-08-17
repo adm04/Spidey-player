@@ -331,12 +331,67 @@ body {
 }
 
 /* ==========================================================================
-   VIEW 1: NOW PLAYING (SPIDEY HANGING ON WEB)
+   VIEW 1: NOW PLAYING (SPIDEY HANGING ON WEB & YOUTUBE PLAYER)
    ========================================================================== */
 #viewPlayer {
   align-items: center;
   justify-content: space-between;
   padding: 0 16px 16px;
+  position: relative;
+}
+
+/* YouTube Video Screen Wrapper (Maintains valid dimensions for YouTube playback) */
+.yt-video-wrapper {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 155px;
+  background: #000;
+  border: 3px solid var(--frame-blue);
+  box-shadow: 0 0 15px rgba(58, 168, 207, 0.4), inset 0 0 10px #000;
+  z-index: 2;
+  overflow: hidden;
+  border-radius: 2px;
+  display: none;
+}
+
+.yt-video-wrapper.active {
+  display: block;
+}
+
+.yt-video-wrapper iframe {
+  width: 100% !important;
+  height: 100% !important;
+  border: none;
+}
+
+/* Stream Mode Toggle Button */
+.stream-control-row {
+  margin-top: 4px;
+}
+
+.stream-mode-btn {
+  background: #091724;
+  border: 2px solid var(--frame-blue);
+  color: var(--blue-txt);
+  font-family: inherit;
+  font-size: 7px;
+  padding: 5px 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 0 #000;
+  outline: none;
+  transition: all 0.1s;
+}
+
+.stream-mode-btn:hover {
+  background: var(--frame-deep);
+  color: var(--cream);
+}
+
+.stream-mode-btn span {
+  color: var(--gold);
 }
 
 /* Hanging Web Rig */
